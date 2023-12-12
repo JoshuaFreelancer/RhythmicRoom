@@ -1,0 +1,738 @@
+/* Estilos para Teléfonos */
+@media only screen and (max-width: 768px) {
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  
+    #mainHeader {
+      position: relative;
+      overflow: hidden;
+    }
+  
+    #headerImage {
+      width: 100%;
+      height: 250px; /* Ajusta según tus preferencias */
+      object-fit: fill;
+      border-bottom-left-radius: 20px; /* Ajusta según tus preferencias */
+      border-bottom-right-radius: 20px; /* Ajusta según tus preferencias */
+      margin-bottom: 20px; /* Ajusta según tus preferencias */
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    #logo {
+      width: 150px; /* Ajusta según tus preferencias */
+      height: auto;
+      position: absolute;
+      top: 5px;
+      left: 10px; /* Ajusta según tus preferencias */
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    }
+  
+    #search-container {
+      position: absolute;
+      top: 5px;
+      right: 10px; /* Ajusta según tus preferencias */
+      height: auto;
+      width: auto;
+      text-align: left;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    #searchInput {
+      position: absolute;
+      top: 40px;
+      right: 20px; /* Ajusta según tus preferencias */
+      padding: 10px;
+      width: 70%; /* Ajusta según tus preferencias */
+      height: 35px;
+      border: 1px solid #F5F5F5;
+      border-radius: 50px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+    }
+  
+    #searchButton {
+      position: absolute;
+      top: 40px;
+      right: 20px; /* Ajusta según tus preferencias */
+      width: 50px; /* Ajusta según tus preferencias */
+      height: 57px;
+      background-color: #F36C5E;
+      border: none;
+      border-radius: 50px;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    #searchButton img {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 18px;
+      height: 16px;
+    }
+  
+    nav {
+      position: absolute;
+      top: 80px; /* Ajusta según tus preferencias */
+      right: 10px; /* Ajusta según tus preferencias */
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px; /* Ajusta según tus preferencias */
+      padding: 10px;
+    }
+  
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+  
+    nav a {
+      color: #F5F5F5;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      text-decoration: none;
+      margin-right: 10px; /* Ajusta según tus preferencias */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  
+    #inicio {
+      padding: 10px; /* Ajusta según tus preferencias */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .text-container {
+      max-width: 300px; /* Ajusta según tus preferencias */
+    }
+  
+    #inicio h1 {
+      font-size: 24px; /* Ajusta según tus preferencias */
+      margin-bottom: 5px; /* Ajusta según tus preferencias */
+      margin-left: 20px; /* Ajusta según tus preferencias */
+      font-weight: 700;
+      color: #F36C5E;
+    }
+  
+    #inicio span {
+      color: #5E84F3;
+      font-weight: 700;
+    }
+  
+    #inicio p {
+      font-size: 12px; /* Ajusta según tus preferencias */
+      margin-top: 6mm; /* Ajusta según tus preferencias */
+      margin-bottom: 10px; /* Ajusta según tus preferencias */
+      margin-left: 20px; /* Ajusta según tus preferencias */
+      color: #000000;
+    }
+  
+    .break-line {
+      display: block;
+    }
+  
+    .start-button {
+      background-color: #5E84F3;
+      color: #FFF;
+      border: none;
+      margin-top: 4mm; /* Ajusta según tus preferencias */
+      margin-left: 20px; /* Ajusta según tus preferencias */
+      border-radius: 8px;
+      padding: 8px 15px;
+      font-size: 16px; /* Ajusta según tus preferencias */
+      cursor: pointer;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    }
+  
+    .start-button:hover {
+      background-color: #445fa3;
+    }
+  
+    #inicio #welcomeImage {
+      position: relative;
+      left: 50px; /* Ajusta según tus preferencias */
+      bottom: 40px; /* Ajusta según tus preferencias */
+      width: 120%; /* Ajusta según tus preferencias */
+      max-width: 300px; /* Ajusta según tus preferencias */
+      border-radius: 50%;
+    }
+  
+    #top-songs h2 {
+      position: relative;
+      bottom: 70px; /* Ajusta según tus preferencias */
+      font-size: 18px; /* Ajusta según tus preferencias */
+      color: #F36C5E;
+      margin-bottom: 20px; /* Ajusta según tus preferencias */
+      margin-left: 15px; /* Ajusta según tus preferencias */
+    }
+  
+    .chart-image {
+      width: 60px; /* Ajusta según tus preferencias */
+      height: 70px; /* Ajusta según tus preferencias */
+      border-radius: 12%;
+      box-shadow: 0px 4px 8px rgba(29, 28, 37, 0.2);
+      object-fit: cover;
+    }
+  
+    #chartContainer {
+      margin-top: 15px; /* Ajusta según tus preferencias */
+      width: 100%;
+      overflow-x: auto;
+    }
+  
+    .chart-wrapper {
+      display: flex;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+  
+    .chart-bar-container {
+      height: 200px; /* Ajusta según tus preferencias */
+      width: 70%; /* Ajusta según tus preferencias */
+      display: flex;
+      align-items: flex-end;
+      position: absolute;
+      top: 200px; /* Ajusta según tus preferencias */
+      left: 10px; /* Ajusta según tus preferencias */
+    }
+  
+    .chart-bar {
+      padding: 8px; /* Ajusta según tus preferencias */
+      margin-right: 6px; /* Ajusta según tus preferencias */
+      background-color: #5E84F3;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: height 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: riseUp 1s ease-out, fallDown 2s reverse;
+      flex-direction: column;
+    }
+  
+    @keyframes riseUp {
+      from {
+        height: 0;
+      }
+  
+      to {
+        height: 100%;
+      }
+    }
+  
+    @keyframes fallDown {
+      from {
+        height: 100%;
+      }
+  
+      to {
+        height: 0;
+      }
+    }
+  
+    .youtube-container {
+      position: absolute;
+      top: 200px; /* Ajusta según tus preferencias */
+      left: 50px; /* Ajusta según tus preferencias */
+      display: block;
+      justify-content: end;
+      align-items: flex-end;
+      margin-left: 10px; /* Ajusta según tus preferencias */
+    }
+  
+    .youtube-container iframe {
+      margin: 0 6px; /* Ajusta según tus preferencias */
+    }
+  
+    .chart-column {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  
+    .chart-label {
+      font-size: 10px; /* Ajusta según tus preferencias */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  
+    .chart-bar:hover .chart-label {
+      opacity: 1;
+    }
+  
+    .chart-bar:hover img {
+      transform: scale(1.15);
+    }
+  
+    #top-artists-albums {
+      background-color: #F5F5F5;
+      padding: 10px; /* Ajusta según tus preferencias */
+      border-radius: 8px;
+      margin-top: 20px; /* Ajusta según tus preferencias */
+    }
+  
+    #top-artists-albums h2 {
+      font-size: 16px; /* Ajusta según tus preferencias */
+      color: #1D1C25;
+      margin-bottom: 15px; /* Ajusta según tus preferencias */
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    .carousel-container {
+      overflow: hidden;
+    }
+  
+    #artistCarousel {
+      display: flex;
+      overflow-x: auto;
+      cursor: grab;
+      padding: 5px; /* Ajusta según tus preferencias */
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    #artistCarousel::-webkit-scrollbar {
+      width: 8px; /* Ajusta según tus preferencias */
+    }
+  
+    #artistCarousel::-webkit-scrollbar-thumb {
+      background-color: #5E84F3;
+      border-radius: 4px;
+    }
+  
+    #artistCarousel::-webkit-scrollbar-track {
+      background-color: #1D1C25;
+      border-radius: 4px;
+    }
+  
+    .artist-card {
+      margin-right: 10px; /* Ajusta según tus preferencias */
+    }
+  
+    .artist-card img {
+      height: 150px; /* Ajusta según tus preferencias */
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  
+    .artist-details {
+      padding: 8px; /* Ajusta según tus preferencias */
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  
+    .artist-details p {
+      font-size: 12px; /* Ajusta según tus preferencias */
+    }
+  
+    /* Footer */
+    footer {
+      background-color: #1D1C25;
+      color: white;
+      padding: 10px; /* Ajusta según tus preferencias */
+    }
+  
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 20px; /* Ajusta según tus preferencias */
+    }
+  
+    .footer-column {
+      margin-left: 15px; /* Ajusta según tus preferencias */
+    }
+  
+    .footer-column h3 {
+      font-size: 14px; /* Ajusta según tus preferencias */
+    }
+  
+    ul footer {
+      margin-left: 5px; /* Ajusta según tus preferencias */
+    }
+  
+    ul li footer {
+      margin-bottom: 6px; /* Ajusta según tus preferencias */
+      font-size: 12px; /* Ajusta según tus preferencias */
+    }
+  
+    .footer-divider {
+      margin-top: 10px; /* Ajusta según tus preferencias */
+      border: 1px solid white;
+    }
+  }
+  
+  /* Estilos para Tablet */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  
+    #mainHeader {
+      position: relative;
+      overflow: hidden;
+    }
+  
+    #headerImage {
+      width: 100%;
+      height: 300px; /* Ajusta según tus preferencias */
+      object-fit: fill;
+      border-bottom-left-radius: 30px; /* Ajusta según tus preferencias */
+      border-bottom-right-radius: 30px; /* Ajusta según tus preferencias */
+      margin-bottom: 30px; /* Ajusta según tus preferencias */
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    #logo {
+      width: 180px; /* Ajusta según tus preferencias */
+      height: auto;
+      position: absolute;
+      top: 10px; /* Ajusta según tus preferencias */
+      left: 20px; /* Ajusta según tus preferencias */
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    }
+  
+    #search-container {
+      position: absolute;
+      top: 10px; /* Ajusta según tus preferencias */
+      right: 20px; /* Ajusta según tus preferencias */
+      height: auto;
+      width: auto;
+      text-align: left;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    #searchInput {
+      position: absolute;
+      top: 60px; /* Ajusta según tus preferencias */
+      right: 40px; /* Ajusta según tus preferencias */
+      padding: 15px; /* Ajusta según tus preferencias */
+      width: 50%; /* Ajusta según tus preferencias */
+      height: 45px; /* Ajusta según tus preferencias */
+      border: 1px solid #F5F5F5;
+      border-radius: 50px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+    }
+  
+    #searchButton {
+      position: absolute;
+      top: 60px; /* Ajusta según tus preferencias */
+      right: 40px; /* Ajusta según tus preferencias */
+      width: 70px; /* Ajusta según tus preferencias */
+      height: 77px; /* Ajusta según tus preferencias */
+      background-color: #F36C5E;
+      border: none;
+      border-radius: 50px;
+      padding: 15px; /* Ajusta según tus preferencias */
+      cursor: pointer;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    #searchButton img {
+      position: absolute;
+      top: 30px; /* Ajusta según tus preferencias */
+      right: 30px; /* Ajusta según tus preferencias */
+      width: 28px; /* Ajusta según tus preferencias */
+      height: 24px; /* Ajusta según tus preferencias */
+    }
+  
+    nav {
+      position: absolute;
+      top: 120px; /* Ajusta según tus preferencias */
+      right: 50px; /* Ajusta según tus preferencias */
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px; /* Ajusta según tus preferencias */
+      padding: 15px; /* Ajusta según tus preferencias */
+    }
+  
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+  
+    nav a {
+      color: #F5F5F5;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      text-decoration: none;
+      margin-right: 30px; /* Ajusta según tus preferencias */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  
+    #inicio {
+      padding: 15px; /* Ajusta según tus preferencias */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .text-container {
+      max-width: 400px; /* Ajusta según tus preferencias */
+    }
+  
+    #inicio h1 {
+      font-size: 32px; /* Ajusta según tus preferencias */
+      margin-bottom: 15px; /* Ajusta según tus preferencias */
+      margin-left: 20px; /* Ajusta según tus preferencias */
+      font-weight: 900;
+      color: #F36C5E;
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+    #inicio span {
+      color: #5E84F3;
+      font-weight: 900;
+    }
+  
+    #inicio p {
+      font-size: 14px; /* Ajusta según tus preferencias */
+      margin-top: 10px; /* Ajusta según tus preferencias */
+      margin-bottom: 20px; /* Ajusta según tus preferencias */
+      margin-left: 20px; /* Ajusta según tus preferencias */
+      color: #000000;
+    }
+  
+    .break-line {
+      display: block;
+    }
+  
+    .start-button {
+      background-color: #5E84F3;
+      color: #FFF;
+      border: none;
+      margin-top: 10px; /* Ajusta según tus preferencias */
+      margin-left: 20px; /* Ajusta según tus preferencias */
+      border-radius: 8px;
+      padding: 15px 30px; /* Ajusta según tus preferencias */
+      font-size: 18px; /* Ajusta según tus preferencias */
+      cursor: pointer;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    }
+  
+    .start-button:hover {
+      background-color: #445fa3;
+    }
+  
+    #inicio #welcomeImage {
+      position: relative;
+      left: 100px; /* Ajusta según tus preferencias */
+      bottom: 60px; /* Ajusta según tus preferencias */
+      width: 120%; /* La imagen ocupará el 100% del ancho de su contenedor */
+      max-width: 600px; /* Ajusta según tus preferencias */
+      border-radius: 50%;
+    }
+  
+    #top-songs h2 {
+      position: relative;
+      bottom: 80px; /* Ajusta según tus preferencias */
+      font-size: 24px; /* Ajusta según tus preferencias */
+      color: #F36C5E;
+      margin-bottom: 30px; /* Ajusta según tus preferencias */
+      margin-left: 15px; /* Ajusta según tus preferencias */
+    }
+  
+    .chart-image {
+      width: 60px; /* Ajusta según tus preferencias */
+      height: 75px; /* Ajusta según tus preferencias */
+      border-radius: 10%;
+      box-shadow: 0px 4px 8px rgba(29, 28, 37, 0.2);
+      object-fit: cover;
+    }
+  
+    #chartContainer {
+      margin-top: 15px; /* Ajusta según tus preferencias */
+      width: 100%;
+      overflow-x: auto;
+    }
+  
+    .chart-wrapper {
+      display: flex;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+  
+    .chart-bar-container {
+      height: 200px; /* Ajusta según tus preferencias */
+      width: 70%; /* Ajusta según tus preferencias */
+      display: flex;
+      align-items: flex-end;
+      position: absolute;
+      top: 200px; /* Ajusta según tus preferencias */
+      left: 10px; /* Ajusta según tus preferencias */
+    }
+  
+    .chart-bar {
+      padding: 8px; /* Ajusta según tus preferencias */
+      margin-right: 6px; /* Ajusta según tus preferencias */
+      background-color: #5E84F3;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: height 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: riseUp 1s ease-out, fallDown 2s reverse;
+      flex-direction: column;
+    }
+  
+    @keyframes riseUp {
+      from {
+        height: 0;
+      }
+  
+      to {
+        height: 100%;
+      }
+    }
+  
+    @keyframes fallDown {
+      from {
+        height: 100%;
+      }
+  
+      to {
+        height: 0;
+      }
+    }
+  
+    .youtube-container {
+      position: absolute;
+      top: 200px; /* Ajusta según tus preferencias */
+      left: 50px; /* Ajusta según tus preferencias */
+      display: block;
+      justify-content: end;
+      align-items: flex-end;
+      margin-left: 10px; /* Ajusta según tus preferencias */
+    }
+  
+    .youtube-container iframe {
+      margin: 0 6px; /* Ajusta según tus preferencias */
+    }
+  
+    .chart-column {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  
+    .chart-label {
+      font-size: 10px; /* Ajusta según tus preferencias */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  
+    #top-artists-albums {
+        padding: 20px; /* Ajusta según tus preferencias */
+        margin-top: 40px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      #top-artists-albums h2 {
+        font-size: 28px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .carousel-container {
+        overflow: hidden;
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      #artistCarousel {
+        padding: 10px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      #artistCarousel::-webkit-scrollbar {
+        width: 12px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      #artistCarousel::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      #artistCarousel::-webkit-scrollbar-track {
+        border-radius: 6px;
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .artist-card {
+        flex: 0 0 auto;
+        margin-right: 20px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .artist-card img {
+        height: 300px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .artist-details {
+        padding: 15px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .artist-details p {
+        font-size: 16px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      /* Footer */
+      footer {
+        padding: 20px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .footer-container {
+        justify-content: space-between;
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .footer-column {
+        margin-left: 40mm;
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .footer-column h3 {
+        font-size: 18px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      ul footer {
+        margin-left: 7mm;
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      ul li footer {
+        margin-bottom: 10px;
+        font-size: 14px; /* Ajusta según tus preferencias */
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    
+      .footer-divider {
+        margin-top: 20px;
+        /* Ajusta otros estilos según sea necesario para tablets */
+      }
+    }

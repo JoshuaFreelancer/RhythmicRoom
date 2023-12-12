@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap">
+    <link rel="stylesheet" href="css/responsive_styles.css">
     <title>RhythmicRoom</title>
 </head>
+
 <body>
-    <header>
-        <img src="images/Logo_complete.png" alt="RhythmicRoom Logo">
-        <h1>RhythmicRoom</h1>
+    <header id="mainHeader">
+        <img src="images/Principal.png" alt="RhythmicRoom Header" id="headerImage">
+        <img src="images/Logo_complete.png" alt="RhythmicRoom Logo" id="logo">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar música o artistas">
+            <button id="searchButton">
+                <img src="images/Search_icon.png" alt="Icono de búsqueda">
+            </button>
+        </div>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
@@ -21,9 +31,37 @@
     </header>
 
     <section id="inicio">
-        <h2>Bienvenido a RhythmicRoom</h2>
-        <!-- Contenido de la sección de Inicio aquí -->
+        <div class="text-container">
+            <h1>Tu Puerta a la Música <span>Moderna</span></h1>
+            <p>
+                Descubre, disfruta y conecta con la música en <span class="break-line">RhythmicRoom</span>.
+              </p>
+            <button class="start-button">¡Comienza ahora!</button>
+        </div>
+        <img src="images/Welcome_image.png" alt="Imagen de bienvenida" id="welcomeImage">
+
+
+        <!-- Contenido de "Temas en Alza del Último Año" -->
+        <div id="top-songs">
+            <div id="topSongsSection">
+                <h2>Temas en Alza del Último Año</h2>
+                <div id="chartContainer">
+                    <div id="youtubeContainer" class="youtube-container">
+                        <!-- Videos de YouTube se agregarán aquí dinámicamente -->
+                    </div>
+                    <!-- Contenedor adicional para la gráfica -->
+                    <div class="chart-wrapper" id="chartWrapper"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido de "Top Albums" -->
+        <h2>Top Albums</h2>
+        <div id="artistCarousel" class="carousel-container">
+            <!-- Aquí se cargarán las imágenes del carrusel -->
+        </div>
     </section>
+
 
     <section id="musicas">
         <h2>Explora Músicas</h2>
@@ -41,9 +79,71 @@
     </section>
 
     <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Descubre</h3>
+                <ul>
+                    <li>Música</li>
+                    <li>Listas</li>
+                    <li>Artistas</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Soporte</h3>
+                <ul>
+                    <li>Registrarse</li>
+                    <li>Loguearse</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>¡Síguenos!</h3>
+                <ul>
+                    <li>YouTube</li>
+                    <li>Instagram</li>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer-divider">
         <p>&copy; 2023 RhythmicRoom. Todos los derechos reservados.</p>
     </footer>
 
     <script src="js/main.js"></script>
+
+    <!-- Script para manejar las rutas y la visibilidad de las secciones -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function showSection(sectionId) {
+                const sections = document.querySelectorAll("section");
+                sections.forEach(section => {
+                    section.style.display = "none";
+                });
+
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.style.display = "block";
+                }
+            }
+
+            function handleNavigation() {
+                const currentHash = window.location.hash.substr(1);
+
+                if (currentHash === "musicas" || currentHash === "listas" || currentHash === "artistas") {
+                    showSection(currentHash);
+                } else {
+                    showSection("inicio");
+                }
+            }
+
+            // Manejar cambios de hash
+            window.addEventListener("hashchange", handleNavigation);
+
+            // Manejar la carga inicial de la página
+            handleNavigation();
+        });
+    </script>
+
 </body>
+
 </html>

@@ -1,11 +1,441 @@
 @font-face {
-    font-family: 'Montserrat';
-    src: url('fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#mainHeader {
+  position: relative;
+  overflow: hidden;
+}
+
+#headerImage {
+  width: 100%;
+  height: 380px;
+  object-fit: fill;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin-bottom: 50px;
+box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+  width: 210px;
+  height: auto;
+  position: absolute;
+  top: 5px;
+  left: 25px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+#search-container {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  height: auto;
+  width: auto;
+  text-align: left;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+#searchInput {
+  position: absolute;
+  top: 40px;
+  right: 100mm;
+  padding: 10px;
+  width: 41%;
+  height: 35px;
+  border: 1px solid #F5F5F5;
+  border-radius: 50px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+}
+
+#searchButton {
+  position: absolute;
+  top: 40px;
+  right: 100mm;
+  width: 60px;
+  height: 57px;
+  background-color: #F36C5E;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+#searchButton img {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+  height: 16px;
+}
+
+nav {
+  position: absolute;
+  top: 100px;
+  right: 125mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: larger;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav a {
+  color: #F5F5F5;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Bienvenida */
+
+#inicio {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-container {
+  max-width: 600px;
+}
+
+#inicio h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  font-weight: 900;
+  color: #F36C5E;
+  /* Color personalizado para "Tu Puerta a la Música" */
+  font-family: 'Montserrat', sans-serif;
+}
+
+#inicio span {
+  color: #5E84F3;
+  /* Color personalizado para "Moderna" */
+  font-weight: 900;
+}
+
+#inicio p {
+  font-size: 18px;
+  margin-top: 12mm;
+  margin-bottom: 25px;
+  margin-left: 40px;
+  color: #000000;
+  /* Color de texto más suave */
+}
+
+.break-line {
+  display: block;
+}
+
+.start-button {
+  background-color: #5E84F3;
+  color: #FFF;
+  border: none;
+  margin-top: 6mm;
+  margin-left: 40px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  /* Incrementa el desenfoque para una sombra más pronunciada */
+}
+
+.start-button:hover {
+  background-color: #445fa3;
+  /* Cambia el color al pasar el ratón sobre el botón */
+}
+
+#inicio #welcomeImage {
+  position: relative;
+  left: 150mm;
+  bottom: 90mm;
+  width: 150%;
+  /* La imagen ocupará el 100% del ancho de su contenedor */
+  max-width: 750px;
+  /* Ajusta según el ancho máximo deseado para la imagen */
+  border-radius: 50%;
+}
+
+/* Temas en Alza (Grafica) */
+
+#top-songs h2 {
+  position: relative;
+  bottom: 110mm;
+  font-size: 32px;
+  color: #F36C5E;
+  margin-bottom: 40px;
+  margin-left: 25px;
+}
+
+.chart-image {
+  width: 80px;
+  height: 95px;
+  border-radius: 15%;
+  box-shadow: 0px 4px 8px rgba(29, 28, 37, 0.2);
+  object-fit: cover;
+  /* Ajuste para la imagen */
+}
+
+#chartContainer {
+  margin-top: 30px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.chart-wrapper {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+.chart-bar-container {
+  height: 280px;
+  width: 52%;
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  top: 295mm;
+  left: 15mm;
+}
+
+.chart-bar {
+  flex: 1;
+  padding: 15px;
+  /* Ajusta según sea necesario */
+  margin-right: 8px;
+  background-color: #5E84F3;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  /* Evita que el contenido desborde */
+  transition: height 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+  animation: riseUp 1s ease-out, fallDown 2s reverse;
+  flex-direction: column;
+  /* Coloca los elementos en una columna */
+}
+
+@keyframes riseUp {
+  from {
+    height: 0;
+    /* Comienza desde una altura de cero */
   }
-  
-  body {
-    font-family: 'Montserrat', sans-serif;
+
+  to {
+    height: 100%;
+    /* Termina en la altura completa */
   }
-  
+}
+
+@keyframes fallDown {
+  from {
+    height: 100%;
+    /* Comienza desde la altura completa */
+  }
+
+  to {
+    height: 0;
+    /* Termina en una altura de cero */
+  }
+}
+
+/* En tu archivo CSS */
+.youtube-container {
+  position: absolute;
+  top: 280mm;
+  left: 200mm;
+  display: block;
+  justify-content: end;
+  align-items: flex-end;
+  margin-left: 20px;
+  /* Ajusta según sea necesario */
+}
+
+.youtube-container iframe {
+  margin: 0 10px;
+}
+
+.chart-column {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.chart-label {
+  flex: 1;
+  z-index: 1;
+  position: absolute;
+  background-color: #F36C5E;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(29, 28, 37, 0.2);
+  font-size: 12px;
+  font-weight: bolder;
+  color: #F5F5F5;
+  /* Color blanco */
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  /* Centra el texto horizontalmente */
+  white-space: normal;
+  /* Permite saltos de línea */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Mostrar puntos suspensivos (...) en caso de desbordamiento */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* Sombra suave para el texto */
+}
+
+.chart-bar:hover .chart-label {
+  opacity: 1;
+}
+
+.chart-bar:hover img {
+  transform: scale(1.15);
+}
+
+/* Seccion Top Albums */
+
+#top-artists-albums {
+  background-color: #F5F5F5;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+#top-artists-albums h2 {
+  font-size: 28px;
+  color: #1D1C25;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  /* Utiliza la fuente Montserrat */
+}
+
+.carousel-container {
+  overflow: hidden;
+}
+
+#artistCarousel {
+  display: flex;
+  overflow-x: auto;
+  cursor: grab;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Cambia el color de la barra de desplazamiento en navegadores WebKit */
+#artistCarousel::-webkit-scrollbar {
+  width: 12px;
+}
+
+#artistCarousel::-webkit-scrollbar-thumb {
+  background-color: #5E84F3;
+  /* Cambia el color de la barra de desplazamiento */
+  border-radius: 6px;
+}
+
+#artistCarousel::-webkit-scrollbar-track {
+  background-color: #1D1C25;
+  border-radius: 6px;
+}
+
+.artist-card {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.artist-card:hover {
+  transform: scale(1.05);
+}
+
+.artist-card img {
+  width: 100%;
+  height: 300px;
+  /* Ajusta la altura según tus preferencias */
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.artist-details {
+  padding: 15px;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.artist-details p {
+  margin: 0;
+  font-size: 16px;
+  /* Ajusta el tamaño de la tipografía según tus preferencias */
+  color: #555;
+  font-family: 'Montserrat', sans-serif;
+  /* Utiliza la fuente Montserrat */
+}
+
+/* Footer */
+
+footer {
+  background-color: #1D1C25;
+  color: white;
+  padding: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-column {
+  flex: 1;
+  margin-left: 40mm;
+}
+
+.footer-column h3 {
+  font-size: 18px;
+}
+
+ul footer {
+  list-style: none;
+  padding: 0;
+}
+
+ul li footer {
+  margin-bottom: 10px;
+  list-style: disc;
+  margin-left: 7mm;
+  font-weight: lighter;
+}
+
+.footer-divider {
+  margin-top: 20px;
+  border: 1px solid white;
+}
+
