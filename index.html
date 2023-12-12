@@ -16,7 +16,7 @@
         <img src="images/Logo_complete.png" alt="RhythmicRoom Logo" id="logo">
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Buscar música o artistas">
-            <button id="searchButton">
+            <button id="searchButton" type="button" onclick="search()">
                 <img src="images/Search_icon.png" alt="Icono de búsqueda">
             </button>
         </div>
@@ -66,6 +66,8 @@
     <section id="musicas">
         <h2>Explora Músicas</h2>
         <!-- Contenido de la sección de Músicas aquí -->
+        <!-- Contenedor para la lista de géneros -->
+    <div id="musicGenresContainer"></div>
     </section>
 
     <section id="listas">
@@ -78,6 +80,25 @@
         <!-- Contenido de la sección de Artistas aquí -->
     </section>
 
+    <section id="searchResults" style="display: none;">
+        <div id="artistsResults" class="results-container">
+                <!-- Resultados de artistas se mostrarán aquí -->
+            </ul>
+        </div>
+        <div id="albumsResults" class="results-container">
+                <!-- Resultados de álbumes se mostrarán aquí -->
+            </ul>
+        </div>
+        <div id="tracksResults" class="results-container">
+                <!-- Resultados de pistas se mostrarán aquí -->
+            </ul>
+        </div>
+    </section>
+    
+    <div id="loader" class="loader-container">
+        <div class="loader"></div>
+      </div>
+      
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -114,34 +135,83 @@
     <!-- Script para manejar las rutas y la visibilidad de las secciones -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            let loadingTimeout; // Variable para rastrear el temporizador de carga
+        
+            // Función para mostrar el loader
+            function showLoader() {
+                document.getElementById("loader").style.display = "flex";
+            }
+        
+            // Función para ocultar el loader
+            function hideLoader() {
+                document.getElementById("loader").style.display = "none";
+            }
+        
+            // Función para detener la carga automáticamente después de un tiempo
+            function stopLoadingAutomatically() {
+                hideLoader();
+                console.log("La carga ha sido detenida automáticamente debido a un tiempo de espera.");
+            }
+        
+            // Función para mostrar una sección y manejar la carga
             function showSection(sectionId) {
+                clearTimeout(loadingTimeout); // Limpiar el temporizador antes de cargar una nueva sección
+                showLoader(); // Mostrar el loader al comenzar a cargar una sección
+        
+                loadingTimeout = setTimeout(stopLoadingAutomatically, 3000); // Establecer un tiempo límite
                 const sections = document.querySelectorAll("section");
                 sections.forEach(section => {
                     section.style.display = "none";
                 });
-
+        
                 const targetSection = document.getElementById(sectionId);
                 if (targetSection) {
                     targetSection.style.display = "block";
+        
+                    if (sectionId === "musicas") {
+                        loadMusicGenres();
+                    } else if (sectionId === "searchResults") {
+                        handleSearchResults();
+                    }
                 }
             }
-
+        
+            // Función para manejar la navegación
             function handleNavigation() {
                 const currentHash = window.location.hash.substr(1);
-
+        
                 if (currentHash === "musicas" || currentHash === "listas" || currentHash === "artistas") {
                     showSection(currentHash);
+                } else if (currentHash.startsWith("searchResults")) {
+                    showSection("searchResults");
                 } else {
                     showSection("inicio");
                 }
             }
-
+        
+            // Función para manejar los resultados de búsqueda
+            function handleSearchResults() {
+                // Lógica específica para la sección de resultados de búsqueda
+                const searchParams = new URLSearchParams(window.location.hash.substr(1).split('?')[1]);
+                const searchTerm = searchParams.get('q');
+        
+                // Llamar a funciones para obtener y mostrar resultados
+                searchArtists(searchTerm);
+                searchAlbums(searchTerm);
+                searchTracks(searchTerm);
+        
+                clearTimeout(loadingTimeout); // Limpiar el temporizador cuando se completan las operaciones
+                hideLoader(); // Ocultar el loader cuando se completan las operaciones
+                document.getElementById('searchResults').style.display = 'block';
+            }
+        
             // Manejar cambios de hash
             window.addEventListener("hashchange", handleNavigation);
-
+        
             // Manejar la carga inicial de la página
             handleNavigation();
         });
+        
     </script>
 
 </body>

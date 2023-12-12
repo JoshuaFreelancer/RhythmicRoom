@@ -439,3 +439,135 @@ ul li footer {
   border: 1px solid white;
 }
 
+/* Estilos generales de la sección musicas */
+
+#musicas {
+  display: none; /* Ocultar la sección por defecto */
+}
+
+/* Estilos para el contenedor de la lista de géneros */
+#musicGenresContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilos para la lista de géneros musicales */
+.genres-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.genre-item {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.genre-image {
+  width: 100px; /* Ajustar según sea necesario */
+  height: 100px; /* Ajustar según sea necesario */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.genre-name {
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Estilos generales para los resultados */
+/* Estilos generales para los resultados */
+/* Estilos generales para los resultados */
+.results-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: -10px; /* Valor negativo para que las imágenes se superpongan */
+}
+
+.result-item {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
+}
+
+.result-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Estilos para el párrafo dentro de .result-item */
+.result-item p {
+  position: absolute;
+  bottom: 10px;
+  text-transform: uppercase;
+  left: -5px;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: left;
+  white-space: normal;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 11); /* Efecto de sombra */
+  overflow: hidden;
+}
+
+/* Estilos para .artist-info y .album-info */
+.result-item .artist-info
+{
+  font-style: italic;
+  position: absolute;
+  top: -2px;
+  left: -5px;
+  font-size: 10px;
+  text-align: left;
+  white-space: normal;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.result-item:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ajusta según tus preferencias */
+}
+
+/* Estilos del loader */
+.loader-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para cubrir la página */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+
