@@ -23,7 +23,7 @@ body {
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
   margin-bottom: 50px;
-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 #logo {
@@ -442,7 +442,8 @@ ul li footer {
 /* Estilos generales de la sección musicas */
 
 #musicas {
-  display: none; /* Ocultar la sección por defecto */
+  display: none;
+  /* Ocultar la sección por defecto */
 }
 
 /* Estilos para el contenedor de la lista de géneros */
@@ -466,8 +467,10 @@ ul li footer {
 }
 
 .genre-image {
-  width: 100px; /* Ajustar según sea necesario */
-  height: 100px; /* Ajustar según sea necesario */
+  width: 100px;
+  /* Ajustar según sea necesario */
+  height: 100px;
+  /* Ajustar según sea necesario */
   object-fit: cover;
   border-radius: 8px;
 }
@@ -484,14 +487,16 @@ ul li footer {
 .results-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: -10px; /* Valor negativo para que las imágenes se superpongan */
+  gap: -10px;
+  /* Valor negativo para que las imágenes se superpongan */
 }
 
 .result-item {
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Efecto de sombra */
 }
 
 .result-item img {
@@ -515,13 +520,13 @@ ul li footer {
   font-weight: bold;
   text-align: left;
   white-space: normal;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 11); /* Efecto de sombra */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 11);
+  /* Efecto de sombra */
   overflow: hidden;
 }
 
 /* Estilos para .artist-info y .album-info */
-.result-item .artist-info
-{
+.result-item .artist-info {
   font-style: italic;
   position: absolute;
   top: -2px;
@@ -536,7 +541,8 @@ ul li footer {
 
 .result-item:hover img {
   transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ajusta según tus preferencias */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Ajusta según tus preferencias */
 }
 
 /* Estilos del loader */
@@ -547,7 +553,7 @@ ul li footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para cubrir la página */
+  background-color: rgba(29, 28, 37, 0.2);
   z-index: 1000;
   justify-content: center;
   align-items: center;
@@ -563,9 +569,117 @@ ul li footer {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
+#userProfileImage {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  cursor: pointer;
+}
+
+#profileOptions {
+  position: absolute;
+  top: 55px;
+  /* Ajusta la posición vertical según tus necesidades */
+  right: 120px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  font-size: large;
+  border-color: #000000;
+  background: #F5F5F5;
+}
+
+/* Estilos para los formularios de inicio de sesión y registro */
+#loginForm,
+#registrationForm {
+    background-color: #1D1C25;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 300px;
+}
+
+#loginForm label,
+#registrationForm label {
+    display: block;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+#loginForm input,
+#registrationForm input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: #000000;
+    color: #fff;
+    border: 1px solid #A19F9F;
+    border-radius: 5px;
+}
+
+#loginForm input::placeholder,
+#registrationForm input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Blanco transparente */
+}
+
+#loginForm input:focus::placeholder,
+#registrationForm input:focus::placeholder {
+    color: transparent; /* Se vuelve transparente al enfocar el input */
+}
+
+#loginResultContainer {
+  position: absolute;
+  bottom: -20px; /* Ajusta la posición vertical según tu diseño */
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#loginResult {
+  color: #ff0000; /* Color rojo para resaltar el mensaje de error */
+  margin: 0; /* Elimina el margen predeterminado del párrafo */
+}
+
+#loginForm button,
+#registrationForm button {
+    background-color: #5E84F3;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#loginForm button:hover,
+#registrationForm button:hover {
+    background-color: #476acc;
+}
+
+#registerResult {
+  color: #fff;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#registerResult.success {
+  background-color: #4CAF50; /* Verde */
+}
+
+#registerResult.error {
+  background-color: #f44336; /* Rojo */
+}
+
 
 
 

@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap">
     <link rel="stylesheet" href="css/responsive_styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap">
+    <link rel="icon" href="./images/notas-musicales.png" type="image/png">
     <title>RhythmicRoom</title>
 </head>
 
@@ -35,8 +36,8 @@
             <h1>Tu Puerta a la Música <span>Moderna</span></h1>
             <p>
                 Descubre, disfruta y conecta con la música en <span class="break-line">RhythmicRoom</span>.
-              </p>
-            <button class="start-button">¡Comienza ahora!</button>
+            </p>
+            <button class="start-button" onclick="redirectToRegister()">¡Comienza ahora!</button>
         </div>
         <img src="images/Welcome_image.png" alt="Imagen de bienvenida" id="welcomeImage">
 
@@ -67,7 +68,7 @@
         <h2>Explora Músicas</h2>
         <!-- Contenido de la sección de Músicas aquí -->
         <!-- Contenedor para la lista de géneros -->
-    <div id="musicGenresContainer"></div>
+        <div id="musicGenresContainer"></div>
     </section>
 
     <section id="listas">
@@ -80,51 +81,98 @@
         <!-- Contenido de la sección de Artistas aquí -->
     </section>
 
+    <img src="./images/perfil_de_usuario.png" alt="Perfil de Usuario" id="userProfileImage"
+        onclick="toggleProfileOptions()">
+    <button id="logoutButton" style="display: none;" onclick="logout()">Cerrar Sesión</button>
+
+    <div id="profileOptions" style="display: none;">
+        <a href="#login">Iniciar Sesión</a>
+        <a href="#register">Registrarse</a>
+    </div>
+    
+    <section id="login" style="display: none;">
+        <form id="loginForm">
+            <label for="loginUsername">Usuario:</label>
+            <input type="text" id="loginUsername" required>
+
+            <label for="loginPassword">Contraseña:</label>
+            <input type="password" id="loginPassword" required>
+
+            <button type="button" onclick="login()">Iniciar Sesión</button>
+        </form>
+        <div id="loginResultContainer">
+            <p id="loginResult"></p>
+        </div>
+    </section>
+
+    <section id="register" style="display: none;">
+        <form id="registrationForm">
+            <label for="registerFirstName">Nombre:</label>
+            <input type="text" id="registerFirstName" required>
+
+            <label for="registerLastName">Apellido:</label>
+            <input type="text" id="registerLastName" required>
+
+            <label for="registerUsername">Usuario:</label>
+            <input type="text" id="registerUsername" required>
+
+            <label for="registerEmail">Email:</label>
+            <input type="email" id="registerEmail" required>
+
+            <label for="registerPassword">Contraseña:</label>
+            <input type="password" id="registerPassword" required>
+
+            <button type="button" onclick="register()">Registrarse</button>
+        </form>
+        <p id="registerResult"></p>
+    </section>
+
+
+
+
     <section id="searchResults" style="display: none;">
         <div id="artistsResults" class="results-container">
-                <!-- Resultados de artistas se mostrarán aquí -->
+            <!-- Resultados de artistas se mostrarán aquí -->
             </ul>
         </div>
         <div id="albumsResults" class="results-container">
-                <!-- Resultados de álbumes se mostrarán aquí -->
+            <!-- Resultados de álbumes se mostrarán aquí -->
             </ul>
         </div>
         <div id="tracksResults" class="results-container">
-                <!-- Resultados de pistas se mostrarán aquí -->
+            <!-- Resultados de pistas se mostrarán aquí -->
             </ul>
         </div>
     </section>
-    
+
     <div id="loader" class="loader-container">
         <div class="loader"></div>
-      </div>
-      
+    </div>
+
     <footer>
         <div class="footer-container">
             <div class="footer-column">
                 <h3>Descubre</h3>
                 <ul>
-                    <li>Música</li>
-                    <li>Listas</li>
-                    <li>Artistas</li>
+                    <li><a href="#musicas">Música</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Soporte</h3>
                 <ul>
-                    <li>Registrarse</li>
-                    <li>Loguearse</li>
+                    <li onclick="redirectToRegister()">Registrarse</li>
+                    <li onclick="redirectToLogin()">Loguearse</li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>¡Síguenos!</h3>
                 <ul>
-                    <li>YouTube</li>
-                    <li>Instagram</li>
-                    <li>Facebook</li>
-                    <li>Twitter</li>
+                    <li><a href="https://www.youtube.com/" target="_blank">YouTube</a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
                 </ul>
-            </div>
+            </div>            
         </div>
         <hr class="footer-divider">
         <p>&copy; 2023 RhythmicRoom. Todos los derechos reservados.</p>
@@ -134,40 +182,167 @@
 
     <!-- Script para manejar las rutas y la visibilidad de las secciones -->
     <script>
+
+        function toggleProfileOptions() {
+            const profileOptions = document.getElementById('profileOptions');
+            if (profileOptions) {
+                profileOptions.style.display = profileOptions.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+        
+        function redirectToLogin() {
+            // Redirigir a la página de registro
+            window.location.href = '#login';
+        }
+
+        function login() {
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+            const resultContainer = document.getElementById("loginResult");
+        
+            // Validar campos obligatorios
+            if (!username || !password) {
+                resultContainer.textContent = "Todos los campos son obligatorios";
+                resultContainer.style.color = "#ff0000"; // Color rojo
+                return;
+            }
+        
+            // Comprobar si el usuario existe en el almacenamiento local
+            const storedUser = localStorage.getItem(username);
+            if (storedUser) {
+                const userData = JSON.parse(storedUser);
+        
+                // Verificar la contraseña
+                if (verifyPassword(userData.password, password)) {
+                    // Inicio de sesión exitoso
+        
+                    resultContainer.textContent = "Inicio de sesión exitoso";
+                    resultContainer.style.color = "#00ff00"; // Color verde
+        
+                    // Redirigir a la página principal después de 2 segundos (ajusta según sea necesario)
+                    setTimeout(function () {
+                        window.location.href = '#inicio';
+                        document.getElementById("loginForm").reset();
+                    }, 2000);
+                } else {
+                    resultContainer.textContent = "Contraseña incorrecta";
+                    resultContainer.style.color = "#ff0000"; // Color rojo
+                }
+            } else {
+                resultContainer.textContent = "Usuario no encontrado";
+                resultContainer.style.color = "#ff0000"; // Color rojo
+            }
+        }
+        
+        function verifyPassword(storedPassword, enteredPassword) {
+            // Implementa la lógica de verificación de contraseñas aquí
+            return storedPassword === enteredPassword; // Este es un ejemplo básico
+        }
+
+        function redirectToRegister() {
+            // Redirigir a la página de registro
+            window.location.href = '#register';
+        }
+
+// Función para registrar
+function register() {
+    const firstName = document.getElementById("registerFirstName").value;
+    const lastName = document.getElementById("registerLastName").value;
+    const username = document.getElementById("registerUsername").value;
+    const email = document.getElementById("registerEmail").value;
+    const password = document.getElementById("registerPassword").value;
+    const resultContainer = document.getElementById("registerResult");
+
+    // Validar campos obligatorios
+    if (!firstName || !lastName || !username || !email || !password) {
+        resultContainer.textContent = "Todos los campos son obligatorios";
+        resultContainer.className = "error";
+        return;
+    }
+
+    // Validar el formato del correo electrónico usando una expresión regular básica
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        resultContainer.textContent = "Formato de correo electrónico no válido";
+        resultContainer.className = "error";
+        return;
+    }
+
+    // Comprobar si el usuario ya existe en el almacenamiento local
+    const existingUser = localStorage.getItem(username);
+    const existingEmail = Object.values(localStorage).some((userData) => {
+        const user = JSON.parse(userData);
+        return user.email === email;
+    });
+
+    if (existingUser) {
+        resultContainer.textContent = "El usuario ya existe";
+        resultContainer.className = "error";
+    } else if (existingEmail) {
+        resultContainer.textContent = "El correo electrónico ya está registrado";
+        resultContainer.className = "error";
+    } else {
+        // Almacenar los datos del usuario en el almacenamiento local
+        const userData = {
+            firstName,
+            lastName,
+            email,
+            password,
+        };
+        localStorage.setItem(username, JSON.stringify(userData));
+
+        resultContainer.textContent = "Registro exitoso";
+        resultContainer.className = "success";
+
+        // Redirigir a la página de inicio de sesión después de 2 segundos (ajusta según sea necesario)
+        setTimeout(function () {
+            window.location.href = '#login';
+            document.getElementById("registrationForm").reset();
+        }, 2000);
+    }
+}
+
+// Función de hash básica (puedes reemplazarla con un algoritmo de hash más seguro)
+function hashPassword(password) {
+    // Este es solo un ejemplo, no es seguro para un entorno de producción
+    return btoa(password);
+}
+
+
         document.addEventListener("DOMContentLoaded", function () {
             let loadingTimeout; // Variable para rastrear el temporizador de carga
-        
+
             // Función para mostrar el loader
             function showLoader() {
                 document.getElementById("loader").style.display = "flex";
             }
-        
+
             // Función para ocultar el loader
             function hideLoader() {
                 document.getElementById("loader").style.display = "none";
             }
-        
+
             // Función para detener la carga automáticamente después de un tiempo
             function stopLoadingAutomatically() {
                 hideLoader();
                 console.log("La carga ha sido detenida automáticamente debido a un tiempo de espera.");
             }
-        
+
             // Función para mostrar una sección y manejar la carga
             function showSection(sectionId) {
                 clearTimeout(loadingTimeout); // Limpiar el temporizador antes de cargar una nueva sección
                 showLoader(); // Mostrar el loader al comenzar a cargar una sección
-        
-                loadingTimeout = setTimeout(stopLoadingAutomatically, 3000); // Establecer un tiempo límite
+
+                loadingTimeout = setTimeout(stopLoadingAutomatically, 2000); // Establecer un tiempo límite
                 const sections = document.querySelectorAll("section");
                 sections.forEach(section => {
                     section.style.display = "none";
                 });
-        
+
                 const targetSection = document.getElementById(sectionId);
                 if (targetSection) {
                     targetSection.style.display = "block";
-        
+
                     if (sectionId === "musicas") {
                         loadMusicGenres();
                     } else if (sectionId === "searchResults") {
@@ -175,43 +350,46 @@
                     }
                 }
             }
-        
+
             // Función para manejar la navegación
             function handleNavigation() {
                 const currentHash = window.location.hash.substr(1);
-        
+
                 if (currentHash === "musicas" || currentHash === "listas" || currentHash === "artistas") {
                     showSection(currentHash);
                 } else if (currentHash.startsWith("searchResults")) {
                     showSection("searchResults");
+                } else if (currentHash === "login" || currentHash === "register") {
+                    showSection(currentHash);
                 } else {
                     showSection("inicio");
                 }
             }
-        
+
             // Función para manejar los resultados de búsqueda
             function handleSearchResults() {
                 // Lógica específica para la sección de resultados de búsqueda
                 const searchParams = new URLSearchParams(window.location.hash.substr(1).split('?')[1]);
                 const searchTerm = searchParams.get('q');
-        
+
                 // Llamar a funciones para obtener y mostrar resultados
                 searchArtists(searchTerm);
                 searchAlbums(searchTerm);
                 searchTracks(searchTerm);
-        
+
                 clearTimeout(loadingTimeout); // Limpiar el temporizador cuando se completan las operaciones
                 hideLoader(); // Ocultar el loader cuando se completan las operaciones
                 document.getElementById('searchResults').style.display = 'block';
             }
-        
+
+            
             // Manejar cambios de hash
             window.addEventListener("hashchange", handleNavigation);
-        
+
             // Manejar la carga inicial de la página
             handleNavigation();
         });
-        
+
     </script>
 
 </body>
