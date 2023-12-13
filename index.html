@@ -2,17 +2,26 @@
 <html lang="en">
 
 <head>
+    <!-- Configuración del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Enlaces a fuentes y estilos -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive_styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap">
-    <link rel="icon" href="./images/notas-musicales.png" type="image/png">
+
+    <!-- Icono de la página -->
+    <link rel="icon" href="./images/Notas-musicales.png" type="image/png">
+
+    <!-- Título de la página -->
     <title>RhythmicRoom</title>
 </head>
 
 <body>
+    <!-- Encabezado de la página -->
     <header id="mainHeader">
+        <!-- Logotipos y barra de búsqueda -->
         <img src="images/Principal.png" alt="RhythmicRoom Header" id="headerImage">
         <img src="images/Logo_complete.png" alt="RhythmicRoom Logo" id="logo">
         <div class="search-container">
@@ -21,17 +30,19 @@
                 <img src="images/Search_icon.png" alt="Icono de búsqueda">
             </button>
         </div>
+
+        <!-- Navegación principal -->
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#musicas">Músicas</a></li>
-                <li><a href="#listas">Listas</a></li>
-                <li><a href="#artistas">Artistas</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Sección de Inicio -->
     <section id="inicio">
+        <!-- Contenido de bienvenida y llamada a la acción -->
         <div class="text-container">
             <h1>Tu Puerta a la Música <span>Moderna</span></h1>
             <p>
@@ -39,11 +50,11 @@
             </p>
             <button class="start-button" onclick="redirectToRegister()">¡Comienza ahora!</button>
         </div>
-        <img src="images/Welcome_image.png" alt="Imagen de bienvenida" id="welcomeImage">
+        <!-- Imagen de bienvenida -->
+        <img src="images/Welcome_image.png" alt="Imagen de bienvenida a RhythmicRoom" id="welcomeImage">
 
-
-        <!-- Contenido de "Temas en Alza del Último Año" -->
-        <div id="top-songs">
+        <!-- Contenido destacado: Temas en Alza del Último Año -->
+        <aside id="top-songs">
             <div id="topSongsSection">
                 <h2>Temas en Alza del Último Año</h2>
                 <div id="chartContainer">
@@ -54,16 +65,16 @@
                     <div class="chart-wrapper" id="chartWrapper"></div>
                 </div>
             </div>
-        </div>
+        </aside>
 
-        <!-- Contenido de "Top Albums" -->
+        <!-- Contenido destacado: Top Albums -->
         <h2>Top Albums</h2>
         <div id="artistCarousel" class="carousel-container">
             <!-- Aquí se cargarán las imágenes del carrusel -->
         </div>
     </section>
 
-
+    <!-- Sección de Explorar Músicas -->
     <section id="musicas">
         <h2>Explora Músicas</h2>
         <!-- Contenido de la sección de Músicas aquí -->
@@ -71,25 +82,18 @@
         <div id="musicGenresContainer"></div>
     </section>
 
-    <section id="listas">
-        <h2>Listas de Reproducción</h2>
-        <!-- Contenido de la sección de Listas aquí -->
-    </section>
-
-    <section id="artistas">
-        <h2>Descubre Artistas</h2>
-        <!-- Contenido de la sección de Artistas aquí -->
-    </section>
-
-    <img src="./images/perfil_de_usuario.png" alt="Perfil de Usuario" id="userProfileImage"
+    <!-- Perfil de Usuario y Opciones -->
+    <img src="./images/Perfil_de_usuario.png" alt="Perfil de Usuario" id="userProfileImage"
         onclick="toggleProfileOptions()">
     <button id="logoutButton" style="display: none;" onclick="logout()">Cerrar Sesión</button>
 
+    <!-- Menú de Opciones de Perfil -->
     <div id="profileOptions" style="display: none;">
         <a href="#login">Iniciar Sesión</a>
         <a href="#register">Registrarse</a>
     </div>
-    
+
+    <!-- Sección de Inicio de Sesión -->
     <section id="login" style="display: none;">
         <form id="loginForm">
             <label for="loginUsername">Usuario:</label>
@@ -105,6 +109,7 @@
         </div>
     </section>
 
+    <!-- Sección de Registro de Usuario -->
     <section id="register" style="display: none;">
         <form id="registrationForm">
             <label for="registerFirstName">Nombre:</label>
@@ -127,30 +132,34 @@
         <p id="registerResult"></p>
     </section>
 
-
-
-
+    <!-- Sección de Resultados de Búsqueda -->
     <section id="searchResults" style="display: none;">
         <div id="artistsResults" class="results-container">
             <!-- Resultados de artistas se mostrarán aquí -->
-            </ul>
+            <ul><!-- Agrega la etiqueta de apertura -->
+            </ul><!-- Agrega la etiqueta de cierre -->
         </div>
         <div id="albumsResults" class="results-container">
             <!-- Resultados de álbumes se mostrarán aquí -->
-            </ul>
+            <ul><!-- Agrega la etiqueta de apertura -->
+            </ul><!-- Agrega la etiqueta de cierre -->
         </div>
         <div id="tracksResults" class="results-container">
             <!-- Resultados de pistas se mostrarán aquí -->
-            </ul>
+            <ul><!-- Agrega la etiqueta de apertura -->
+            </ul><!-- Agrega la etiqueta de cierre -->
         </div>
     </section>
 
-    <div id="loader" class="loader-container">
-        <div class="loader"></div>
+    <!-- Loader -->
+    <div id="loader" class="loader-container" aria-hidden="true">
+        <div class="loader" aria-label="Cargando"></div>
     </div>
 
+    <!-- Pie de página -->
     <footer>
         <div class="footer-container">
+            <!-- Enlaces de descubrimiento y soporte -->
             <div class="footer-column">
                 <h3>Descubre</h3>
                 <ul>
@@ -164,6 +173,7 @@
                     <li onclick="redirectToLogin()">Loguearse</li>
                 </ul>
             </div>
+            <!-- Enlaces de redes sociales -->
             <div class="footer-column">
                 <h3>¡Síguenos!</h3>
                 <ul>
@@ -172,24 +182,26 @@
                     <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
                     <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
                 </ul>
-            </div>            
+            </div>
         </div>
         <hr class="footer-divider">
+        <!-- Derechos de autor -->
         <p>&copy; 2023 RhythmicRoom. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script principal -->
     <script src="js/main.js"></script>
 
     <!-- Script para manejar las rutas y la visibilidad de las secciones -->
     <script>
 
         function toggleProfileOptions() {
-            const profileOptions = document.getElementById('profileOptions');
+            const profileOptions = document.querySelector('#profileOptions');
             if (profileOptions) {
                 profileOptions.style.display = profileOptions.style.display === 'none' ? 'block' : 'none';
             }
         }
-        
+
         function redirectToLogin() {
             // Redirigir a la página de registro
             window.location.href = '#login';
@@ -199,26 +211,26 @@
             const username = document.getElementById("loginUsername").value;
             const password = document.getElementById("loginPassword").value;
             const resultContainer = document.getElementById("loginResult");
-        
+
             // Validar campos obligatorios
             if (!username || !password) {
                 resultContainer.textContent = "Todos los campos son obligatorios";
                 resultContainer.style.color = "#ff0000"; // Color rojo
                 return;
             }
-        
+
             // Comprobar si el usuario existe en el almacenamiento local
             const storedUser = localStorage.getItem(username);
             if (storedUser) {
                 const userData = JSON.parse(storedUser);
-        
+
                 // Verificar la contraseña
                 if (verifyPassword(userData.password, password)) {
                     // Inicio de sesión exitoso
-        
+
                     resultContainer.textContent = "Inicio de sesión exitoso";
                     resultContainer.style.color = "#00ff00"; // Color verde
-        
+
                     // Redirigir a la página principal después de 2 segundos (ajusta según sea necesario)
                     setTimeout(function () {
                         window.location.href = '#inicio';
@@ -233,7 +245,7 @@
                 resultContainer.style.color = "#ff0000"; // Color rojo
             }
         }
-        
+
         function verifyPassword(storedPassword, enteredPassword) {
             // Implementa la lógica de verificación de contraseñas aquí
             return storedPassword === enteredPassword; // Este es un ejemplo básico
@@ -244,69 +256,64 @@
             window.location.href = '#register';
         }
 
-// Función para registrar
-function register() {
-    const firstName = document.getElementById("registerFirstName").value;
-    const lastName = document.getElementById("registerLastName").value;
-    const username = document.getElementById("registerUsername").value;
-    const email = document.getElementById("registerEmail").value;
-    const password = document.getElementById("registerPassword").value;
-    const resultContainer = document.getElementById("registerResult");
+        // Función para registrar
+        function register() {
+            const firstName = document.getElementById("registerFirstName").value;
+            const lastName = document.getElementById("registerLastName").value;
+            const username = document.getElementById("registerUsername").value;
+            const email = document.getElementById("registerEmail").value;
+            const password = document.getElementById("registerPassword").value;
+            const resultContainer = document.getElementById("registerResult");
 
-    // Validar campos obligatorios
-    if (!firstName || !lastName || !username || !email || !password) {
-        resultContainer.textContent = "Todos los campos son obligatorios";
-        resultContainer.className = "error";
-        return;
-    }
+            // Validar campos obligatorios
+            if (!firstName || !lastName || !username || !email || !password) {
+                resultContainer.textContent = "Todos los campos son obligatorios";
+                resultContainer.className = "error";
+                return;
+            }
 
-    // Validar el formato del correo electrónico usando una expresión regular básica
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        resultContainer.textContent = "Formato de correo electrónico no válido";
-        resultContainer.className = "error";
-        return;
-    }
+            // Validar el formato del correo electrónico usando una expresión regular básica
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                resultContainer.textContent = "Formato de correo electrónico no válido";
+                resultContainer.className = "error";
+                return;
+            }
 
-    // Comprobar si el usuario ya existe en el almacenamiento local
-    const existingUser = localStorage.getItem(username);
-    const existingEmail = Object.values(localStorage).some((userData) => {
-        const user = JSON.parse(userData);
-        return user.email === email;
-    });
 
-    if (existingUser) {
-        resultContainer.textContent = "El usuario ya existe";
-        resultContainer.className = "error";
-    } else if (existingEmail) {
-        resultContainer.textContent = "El correo electrónico ya está registrado";
-        resultContainer.className = "error";
-    } else {
-        // Almacenar los datos del usuario en el almacenamiento local
-        const userData = {
-            firstName,
-            lastName,
-            email,
-            password,
-        };
-        localStorage.setItem(username, JSON.stringify(userData));
+            // Comprobar si el usuario ya existe en el almacenamiento local
+            const existingUser = localStorage.getItem(username);
+            const existingEmail = Object.values(localStorage).some((userData) => {
+                const user = JSON.parse(userData);
+                return user.email === email;
+            });
 
-        resultContainer.textContent = "Registro exitoso";
-        resultContainer.className = "success";
+            if (existingUser) {
+                resultContainer.textContent = "El usuario ya existe";
+                resultContainer.className = "error";
+            } else if (existingEmail) {
+                resultContainer.textContent = "El correo electrónico ya está registrado";
+                resultContainer.className = "error";
+            } else {
+                // Almacenar los datos del usuario en el almacenamiento local
+                const userData = {
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                };
+                localStorage.setItem(username, JSON.stringify(userData));
 
-        // Redirigir a la página de inicio de sesión después de 2 segundos (ajusta según sea necesario)
-        setTimeout(function () {
-            window.location.href = '#login';
-            document.getElementById("registrationForm").reset();
-        }, 2000);
-    }
-}
+                resultContainer.textContent = "Registro exitoso";
+                resultContainer.className = "success";
 
-// Función de hash básica (puedes reemplazarla con un algoritmo de hash más seguro)
-function hashPassword(password) {
-    // Este es solo un ejemplo, no es seguro para un entorno de producción
-    return btoa(password);
-}
+                // Redirigir a la página de inicio de sesión después de 2 segundos (ajusta según sea necesario)
+                setTimeout(function () {
+                    window.location.href = '#login';
+                    document.getElementById("registrationForm").reset();
+                }, 2000);
+            }
+        }
 
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -382,7 +389,7 @@ function hashPassword(password) {
                 document.getElementById('searchResults').style.display = 'block';
             }
 
-            
+
             // Manejar cambios de hash
             window.addEventListener("hashchange", handleNavigation);
 
