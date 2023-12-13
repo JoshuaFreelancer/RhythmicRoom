@@ -1,8 +1,8 @@
-// main.js
+// Definir la API key globalmente
+const apiKey = "f04f441ada53ca5ad2085e02660c2406"; // Cambiar por tu key de Last.fm
 
 document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = "http://ws.audioscrobbler.com/2.0/";
-  const apiKey = "f04f441ada53ca5ad2085e02660c2406";
 
   // Cargar las canciones en alza al iniciar la página
   fetch(
@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   )
     .then((response) => response.json())
     .then((data) => {
-      const chartContainer = document.getElementById("chartContainer");
       const chartWrapper = document.getElementById("chartWrapper");
 
       // Limpiar el contenedor antes de dibujar la gráfica
@@ -43,7 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const image = document.createElement("img");
             image.classList.add("chart-image");
             image.src =
-              trackInfo.track.album.image[2]["#text"] || "placeholder.jpg";
+              trackInfo.track.album.image[2]["#text"] ||
+              "images/placeholder.ppng";
             image.alt = track.name;
 
             bar.appendChild(label);
@@ -61,21 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) =>
       console.error("Error al obtener datos de la API (Temas en alza):", error)
     );
-
-  // Ejemplo de cómo realizar una solicitud a la API de Last.fm para obtener información de artistas
-  const artistSection = document.getElementById("artistas");
-
-  fetch(
-    `${apiUrl}?method=artist.getInfo&artist=Coldplay&api_key=${apiKey}&format=json`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      artistSection.innerHTML = `<h2>${data.artist.name}</h2>
-                                       <p>${data.artist.bio.summary}</p>`;
-    })
-    .catch((error) =>
-      console.error("Error al obtener datos de la API (Artistas):", error)
-    );
 });
 
 // Función para dibujar la gráfica
@@ -91,7 +76,7 @@ function drawChart(songNames, chartData) {
 
   // Crear elementos HTML para la gráfica
   chartData.forEach((popularity, index) => {
-    const bar = createChartBar(popularity, songNames[index]);
+    const bar = createChartBar(popularity, songNames[index], chartData);
     barContainer.appendChild(bar);
   });
 
@@ -100,7 +85,7 @@ function drawChart(songNames, chartData) {
 }
 
 // Función para crear una barra individual
-function createChartBar(popularity, label, track) {
+function createChartBar(popularity, label, chartData) {
   const bar = document.createElement("div");
   bar.classList.add("chart-bar");
   bar.style.height = `${(popularity / Math.max(...chartData)) * 100}%`;
@@ -113,14 +98,14 @@ function createChartBar(popularity, label, track) {
   image.classList.add("chart-image");
 
   if (
-    track &&
-    track.image &&
-    Array.isArray(track.image) &&
-    track.image.length > 2
+    chartData &&
+    chartData.image &&
+    Array.isArray(chartData.image) &&
+    chartData.image.length > 2
   ) {
-    image.src = track.image[2]["#text"];
+    image.src = chartData.image[2]["#text"];
   } else {
-    image.src = "../images/Placeholder.png";
+    image.src = "../images/placeholder.png";
   }
 
   image.alt = label;
@@ -131,45 +116,18 @@ function createChartBar(popularity, label, track) {
   return bar;
 }
 
-// Cargar los artistas principales al iniciar la página
-document.addEventListener("DOMContentLoaded", function () {
-  const apiUrl = "http://ws.audioscrobbler.com/2.0/";
-  const apiKey = "f04f441ada53ca5ad2085e02660c2406";
-
-  fetch(
-    `${apiUrl}?method=chart.getTopArtists&api_key=${apiKey}&format=json&limit=5`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const artistCarousel = document.getElementById("artistCarousel");
-
-      data.artists.artist.forEach((artist) => {
-        createArtistCard(artist, apiKey, apiUrl)
-          .then((artistCard) => {
-            artistCarousel.appendChild(artistCard);
-          })
-          .catch((error) =>
-            console.error("Error al crear la tarjeta del artista:", error)
-          );
-      });
-    })
-    .catch((error) =>
-      console.error("Error al obtener datos de la API (Top Artistas):", error)
-    );
-});
-
 // Crear un contenedor para los videos de YouTube
 document.addEventListener("DOMContentLoaded", function () {
   const youtubeContainer = document.getElementById("youtubeContainer");
 
   const youtubeVideos = [
-    "Y4M6Nm5UQOU",
-    // Agrega más IDs de videos según sea necesario
+    "PyXfSlxOPpA", // Este es un ID de video que generalmente funciona bien
+    // Puedes agregar más IDs de videos según sea necesario
   ];
 
   youtubeVideos.forEach((videoId) => {
     const youtubeEmbed = document.createElement("iframe");
-    youtubeEmbed.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1`;
+    youtubeEmbed.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1&showinfo=0&modestbranding=1&rel=0`;
     youtubeEmbed.width = 510;
     youtubeEmbed.height = 325;
     youtubeEmbed.allowFullscreen = true;
@@ -178,57 +136,56 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Cargar más artistas al iniciar la página
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const apiUrl = "http://ws.audioscrobbler.com/2.0/";
-  const apiKey = "f04f441ada53ca5ad2085e02660c2406";
 
-  fetch(
-    `${apiUrl}?method=chart.getTopArtists&api_key=${apiKey}&format=json&limit=10`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const artistCarousel = document.getElementById("artistCarousel");
-
-      data.artists.artist.forEach((artist) => {
-        createArtistCard(artist, apiKey, apiUrl, artistCarousel)
-          .then((artistCard) => {
-            artistCarousel.appendChild(artistCard);
-          })
-          .catch((error) =>
-            console.error("Error al crear la tarjeta del artista:", error)
-          );
-      });
-    })
-    .catch((error) =>
-      console.error("Error al obtener datos de la API (Top Artistas):", error)
+  try {
+    const response = await fetch(
+      `${apiUrl}?method=chart.getTopArtists&api_key=${apiKey}&format=json&limit=10`
     );
+    const data = await response.json();
+
+    const artistCarousel = document.getElementById("artistCarousel");
+
+    for (const artist of data.artists.artist) {
+      try {
+        const artistCard = await createArtistCard(
+          artist,
+          apiKey,
+          apiUrl,
+          artistCarousel
+        );
+        if (artistCard) {
+          artistCarousel.appendChild(artistCard);
+        }
+      } catch (error) {
+        console.error("Error al crear la tarjeta del artista:", error);
+      }
+    }
+  } catch (error) {
+    console.error("Error al obtener datos de la API (Top Artistas):", error);
+  }
 });
 
-// Función para crear una tarjeta de artista
 async function createArtistCard(artist, apiKey, apiUrl, artistCarousel) {
-  return new Promise(async (resolve, reject) => {
-    const artistCard = document.createElement("div");
-    artistCard.classList.add("artist-card");
+  const artistCard = document.createElement("div");
+  artistCard.classList.add("artist-card");
 
-    try {
-      const topAlbumsResponse = await fetch(
-        `${apiUrl}?method=artist.getTopAlbums&api_key=${apiKey}&artist=${encodeURIComponent(
-          artist.name
-        )}&format=json&limit=1`
-      );
-      const topAlbumsData = await topAlbumsResponse.json();
+  try {
+    const topAlbumsResponse = await fetch(
+      `${apiUrl}?method=artist.getTopAlbums&api_key=${apiKey}&artist=${encodeURIComponent(
+        artist.name
+      )}&format=json&limit=1`
+    );
+    const topAlbumsData = await topAlbumsResponse.json();
 
-      if (!isAlbumDuplicate(topAlbumsData.topalbums.album, artistCarousel)) {
-        const image = document.createElement("img");
-        const imageUrl = topAlbumsData.topalbums.album[0].image[3]["#text"];
+    if (!isAlbumDuplicate(topAlbumsData.topalbums.album, artistCarousel)) {
+      const image = document.createElement("img");
+      const imageUrl = topAlbumsData.topalbums.album[0].image[3]["#text"];
 
-        if (imageUrl) {
-          image.src = imageUrl;
-          image.alt = artist.name;
-        } else {
-          image.src = "placeholder.jpg";
-          image.alt = "Placeholder";
-        }
+      if (imageUrl && isValidImageUrl(imageUrl)) {
+        image.src = imageUrl;
+        image.alt = artist.name;
 
         const artistName = document.createElement("p");
         artistName.innerText = artist.name;
@@ -236,14 +193,26 @@ async function createArtistCard(artist, apiKey, apiUrl, artistCarousel) {
         artistCard.appendChild(image);
         artistCard.appendChild(artistName);
 
-        resolve(artistCard);
+        return artistCard;
       } else {
-        resolve(null);
+        // Tratar el caso de una URL de imagen no válida
+        return null;
       }
-    } catch (error) {
-      reject(error);
+    } else {
+      // Tratar el caso de un álbum duplicado
+      return null;
     }
-  });
+  } catch (error) {
+    // Manejar errores
+    console.error("Error al crear la tarjeta del artista:", error);
+    return null;
+  }
+}
+
+function isValidImageUrl(url) {
+  // Implementar lógica para verificar si la URL de la imagen es válida
+  // Puede ser tan simple como verificar si la URL contiene "http" o "https"
+  return url.includes("http");
 }
 
 // Función para verificar si un álbum ya está en el carrusel
@@ -256,10 +225,41 @@ function isAlbumDuplicate(albumData, artistCarousel) {
   return albumNames.has(albumData[0].name);
 }
 
-// Función para cargar los generos en la seccion musica
+// Función para obtener la imagen del artista asociado al género
+async function getArtistImage(tag) {
+  const apiUrl = "http://ws.audioscrobbler.com/2.0/";
+
+  try {
+    // Buscamos artistas con el nombre del género
+    const artistSearchResponse = await fetch(
+      `${apiUrl}?method=artist.search&artist=${encodeURIComponent(
+        tag.name
+      )}&api_key=${apiKey}&format=json&limit=1`
+    );
+
+    const artistSearchData = await artistSearchResponse.json();
+
+    // Verificamos si encontramos algún artista
+    if (
+      artistSearchData.results &&
+      artistSearchData.results.artistmatches &&
+      Array.isArray(artistSearchData.results.artistmatches.artist) &&
+      artistSearchData.results.artistmatches.artist.length > 0
+    ) {
+      // Tomamos la imagen del primer artista encontrado
+      return artistSearchData.results.artistmatches.artist[0].image[3]["#text"];
+    }
+  } catch (error) {
+    console.error(`Error al obtener imagen del artista: ${error}`);
+  }
+
+  // Si no encontramos un artista o hay un error, devolvemos null
+  return null;
+}
+
+// Cargar generos de musica en la seccion Musicas
 async function loadMusicGenres() {
   const apiUrl = "http://ws.audioscrobbler.com/2.0/";
-  const apiKey = "f04f441ada53ca5ad2085e02660c2406";
 
   try {
     const response = await fetch(
@@ -270,29 +270,15 @@ async function loadMusicGenres() {
     const genresContainer = document.getElementById("musicGenresContainer");
     genresContainer.innerHTML = "";
 
-    const genresList = document.createElement("ul");
-    genresList.classList.add("genres-list");
+    const genresList = document.createDocumentFragment();
 
-    data.toptags.tag.forEach((tag) => {
-      const genreItem = document.createElement("li");
-      genreItem.classList.add("genre-item");
-
-      const genreImage = document.createElement("img");
-      genreImage.src = getGenreImage(tag) || "images/placeholder.png";
-      genreImage.alt = tag.name;
-
-      const genreName = document.createElement("p");
-      genreName.innerText = tag.name;
-
-      genreItem.appendChild(genreImage);
-      genreItem.appendChild(genreName);
-
-      genreItem.addEventListener("click", () => {
-        console.log(`Género seleccionado: ${tag.name}`);
-      });
-
-      genresList.appendChild(genreItem);
-    });
+    // Utilizar Promise.all para cargar en paralelo
+    await Promise.all(
+      data.toptags.tag.map(async (tag) => {
+        const genreItem = await createGenreItem(tag);
+        genresList.appendChild(genreItem);
+      })
+    );
 
     genresContainer.appendChild(genresList);
   } catch (error) {
@@ -303,39 +289,90 @@ async function loadMusicGenres() {
   }
 }
 
-function getGenreImage(tag) {
-  // Verificar si hay imágenes disponibles en la propiedad "image"
-  if (tag.image && Array.isArray(tag.image) && tag.image.length > 0) {
-    // Obtener la última imagen disponible (cambia el índice si es necesario)
-    const lastImageIndex = tag.image.length - 1;
-    return tag.image[lastImageIndex]["#text"];
+// Usar un objeto para almacenar en caché las imágenes de los artistas
+const artistImageCache = {};
+
+async function createGenreItem(tag) {
+  const genreItem = document.createElement("li");
+  genreItem.classList.add("genre-item");
+
+  const genreImage = await createGenreImage(tag);
+  const genreName = createGenreName(tag);
+
+  genreItem.appendChild(genreImage);
+  genreItem.appendChild(genreName);
+
+  genreItem.addEventListener("click", () => {
+    console.log(`Género seleccionado: ${tag.name}`);
+  });
+
+  return genreItem;
+}
+
+async function createGenreImage(tag) {
+  const genreImage = document.createElement("img");
+  genreImage.alt = tag.name;
+
+  try {
+    let artistImage = artistImageCache[tag.name];
+
+    // Verificar si la imagen está en caché
+    if (!artistImage) {
+      // Obtener la imagen del artista asociado al género
+      artistImage = await getArtistImage(tag);
+      // Almacenar en caché la imagen
+      artistImageCache[tag.name] = artistImage;
+    }
+
+    genreImage.src = artistImage || "images/placeholder.png";
+  } catch (error) {
+    console.error(`Error al obtener imagen del artista: ${error}`);
+    // Si hay un error, obtener la última imagen del género como alternativa
+    genreImage.src = getGenreImage(tag) || "images/placeholder.png";
   }
 
-  // Si no hay imágenes disponibles, devolver null
+  return genreImage;
+}
+
+// Función para crear el nombre del género
+function createGenreName(tag) {
+  const genreName = document.createElement("p");
+  genreName.innerText = tag.name;
+  return genreName;
+}
+
+function getGenreImage(tag) {
+  if (tag.image && Array.isArray(tag.image) && tag.image.length > 0) {
+    return tag.image[tag.image.length - 1]["#text"];
+  }
+
   return null;
 }
 
-function search() {
+async function search() {
   const searchTerm = document.getElementById("searchInput").value;
 
-  // Actualizar la URL con los parámetros de búsqueda
-  const newUrl = `${window.location.origin}${
-    window.location.pathname
-  }#searchResults?q=${encodeURIComponent(searchTerm)}`;
-  window.location.href = newUrl;
+  try {
+    // Actualizar la URL con los parámetros de búsqueda
+    const newUrl = `${window.location.origin}${
+      window.location.pathname
+    }#searchResults?q=${encodeURIComponent(searchTerm)}`;
+    window.location.href = newUrl;
 
-  // Llamar a funciones para obtener y mostrar resultados
-  searchArtists(searchTerm);
-  searchAlbums(searchTerm);
-  searchTracks(searchTerm);
+    // Llamar a funciones para obtener resultados
+    searchArtists(searchTerm),
+      searchAlbums(searchTerm),
+      searchTracks(searchTerm);
 
-  document.getElementById("searchResults").style.display = "block";
+    document.getElementById("searchResults").style.display = "block";
+  } catch (error) {
+    console.error("Error al realizar la búsqueda:", error);
+  }
 }
 
 // Función para buscar artistas
 async function searchArtists(searchTerm) {
   const apiUrl = "http://ws.audioscrobbler.com/2.0/";
-  const apiKey = "f04f441ada53ca5ad2085e02660c2406";
 
   try {
     const response = await fetch(
@@ -391,7 +428,6 @@ async function searchArtists(searchTerm) {
 // Función para buscar álbumes
 async function searchAlbums(searchTerm) {
   const apiUrl = "http://ws.audioscrobbler.com/2.0/";
-  const apiKey = "f04f441ada53ca5ad2085e02660c2406";
 
   try {
     const response = await fetch(
@@ -432,7 +468,6 @@ async function searchAlbums(searchTerm) {
 // Función para buscar pistas
 async function searchTracks(searchTerm) {
   const apiUrl = "http://ws.audioscrobbler.com/2.0/";
-  const apiKey = "f04f441ada53ca5ad2085e02660c2406";
 
   try {
     const response = await fetch(

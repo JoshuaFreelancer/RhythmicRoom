@@ -82,7 +82,7 @@ body {
 nav {
   position: absolute;
   top: 100px;
-  right: 125mm;
+  right: 150mm;
   display: flex;
   justify-content: space-between;
   font-size: larger;
@@ -101,6 +101,25 @@ nav a {
   text-decoration: none;
   margin-right: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#userProfileImage {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  cursor: pointer;
+}
+
+#profileOptions {
+  position: absolute;
+  top: 55px;
+  /* Ajusta la posición vertical según tus necesidades */
+  right: 120px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  font-size: large;
+  border-color: #000000;
+  background: #F5F5F5;
 }
 
 /* Bienvenida */
@@ -259,7 +278,7 @@ nav a {
   }
 }
 
-/* En tu archivo CSS */
+/* Estilos para el video Youtube */
 .youtube-container {
   position: absolute;
   top: 280mm;
@@ -443,27 +462,41 @@ ul li footer {
 
 #musicas {
   display: none;
-  /* Ocultar la sección por defecto */
 }
 
 /* Estilos para el contenedor de la lista de géneros */
 #musicGenresContainer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-/* Estilos para la lista de géneros musicales */
-.genres-list {
-  list-style: none;
-  padding: 0;
   display: flex;
   flex-wrap: wrap;
+  /* Permite que los elementos pasen a la siguiente línea si no hay espacio */
+  justify-content: space-around;
+  /* Ajusta según tu diseño */
+  align-items: center;
+  /* Ajusta según tu diseño */
+  list-style: none;
+  /* Elimina los estilos de lista por defecto */
+  padding: 0;
+  /* Elimina el relleno por defecto de la lista */
 }
 
+/* Estilos para cada elemento de género */
 .genre-item {
-  margin: 10px;
-  cursor: pointer;
+  flex-basis: calc(33.33% - 10px);
+  /* Ajusta según tu diseño y número de columnas */
+  margin: 5px;
+  /* Espaciado entre los elementos */
+  text-align: center;
+  /* Alinea el texto al centro, ajusta según tu diseño */
+}
+
+/* Estilos para la imagen de género */
+.genre-item img {
+  width: 50%;
+  /* Ajusta el ancho de la imagen para llenar el contenedor */
+  height: auto;
+  /* Mantiene la proporción de la imagen */
+  border-radius: 5px;
+  /* Agrega esquinas redondeadas, ajusta según tu diseño */
 }
 
 .genre-image {
@@ -482,8 +515,7 @@ ul li footer {
 }
 
 /* Estilos generales para los resultados */
-/* Estilos generales para los resultados */
-/* Estilos generales para los resultados */
+
 .results-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -545,7 +577,98 @@ ul li footer {
   /* Ajusta según tus preferencias */
 }
 
+/* Estilos para los formularios de inicio de sesión y registro */
+#loginForm,
+#registrationForm {
+  background-color: #1D1C25;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 300px;
+}
+
+#loginForm label,
+#registrationForm label {
+  display: block;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+#loginForm input,
+#registrationForm input {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #000000;
+  color: #fff;
+  border: 1px solid #A19F9F;
+  border-radius: 5px;
+}
+
+#loginForm input::placeholder,
+#registrationForm input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  /* Blanco transparente */
+}
+
+#loginForm input:focus::placeholder,
+#registrationForm input:focus::placeholder {
+  color: transparent;
+  /* Se vuelve transparente al enfocar el input */
+}
+
+#loginResultContainer {
+  position: absolute;
+  bottom: -20px;
+  /* Ajusta la posición vertical según tu diseño */
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#loginResult {
+  color: #ff0000;
+  /* Color rojo para resaltar el mensaje de error */
+  margin: 0;
+  /* Elimina el margen predeterminado del párrafo */
+}
+
+#loginForm button,
+#registrationForm button {
+  background-color: #5E84F3;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#loginForm button:hover,
+#registrationForm button:hover {
+  background-color: #476acc;
+}
+
+#registerResult {
+  color: #fff;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#registerResult.success {
+  background-color: #4CAF50;
+  /* Verde */
+}
+
+#registerResult.error {
+  background-color: #f44336;
+  /* Rojo */
+}
+
 /* Estilos del loader */
+
 .loader-container {
   display: none;
   position: fixed;
@@ -577,111 +700,3 @@ ul li footer {
     transform: rotate(360deg);
   }
 }
-
-#userProfileImage {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  cursor: pointer;
-}
-
-#profileOptions {
-  position: absolute;
-  top: 55px;
-  /* Ajusta la posición vertical según tus necesidades */
-  right: 120px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bolder;
-  font-size: large;
-  border-color: #000000;
-  background: #F5F5F5;
-}
-
-/* Estilos para los formularios de inicio de sesión y registro */
-#loginForm,
-#registrationForm {
-    background-color: #1D1C25;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px auto;
-    width: 300px;
-}
-
-#loginForm label,
-#registrationForm label {
-    display: block;
-    color: #fff;
-    margin-bottom: 5px;
-}
-
-#loginForm input,
-#registrationForm input {
-    width: calc(100% - 16px);
-    padding: 8px;
-    margin-bottom: 10px;
-    background-color: #000000;
-    color: #fff;
-    border: 1px solid #A19F9F;
-    border-radius: 5px;
-}
-
-#loginForm input::placeholder,
-#registrationForm input::placeholder {
-    color: rgba(255, 255, 255, 0.7); /* Blanco transparente */
-}
-
-#loginForm input:focus::placeholder,
-#registrationForm input:focus::placeholder {
-    color: transparent; /* Se vuelve transparente al enfocar el input */
-}
-
-#loginResultContainer {
-  position: absolute;
-  bottom: -20px; /* Ajusta la posición vertical según tu diseño */
-  left: 0;
-  width: 100%;
-  text-align: center;
-}
-
-#loginResult {
-  color: #ff0000; /* Color rojo para resaltar el mensaje de error */
-  margin: 0; /* Elimina el margen predeterminado del párrafo */
-}
-
-#loginForm button,
-#registrationForm button {
-    background-color: #5E84F3;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-}
-
-#loginForm button:hover,
-#registrationForm button:hover {
-    background-color: #476acc;
-}
-
-#registerResult {
-  color: #fff;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-#registerResult.success {
-  background-color: #4CAF50; /* Verde */
-}
-
-#registerResult.error {
-  background-color: #f44336; /* Rojo */
-}
-
-
-
-
-
-
