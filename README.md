@@ -4,7 +4,7 @@
 
 RhythmicRoom es una plataforma diseñada para que los amantes de la música descubran, disfruten y se conecten con sus canciones favoritas. Desde artistas destacados hasta listas de reproducción personalizadas, esta aplicación busca ofrecer la armonía perfecta para cada momento.
 
-### Información Adicional
+### Desarrollador
 
 - **Autor:** Jesús García
 - **Cédula:** 30.30.324
@@ -31,6 +31,12 @@ cd (la ruta donde clonaste el proyecto)
  Instala las dependencias (No necesario para abrir en el navegador solo para el webpack)
  
 npm install
+
+## Cambiar claves
+
+ Recuerda registrarte en la pagina de Last.fm para usar la api dentro del codigo en la carpeta /js/main.js tienes que editar la linea...
+
+const apiKey = "f04f441ada53ca5ad2085e02660c2406"; // Cambiar por tu key de Last.fm
 
 ## Iniciar la Aplicación
 Abre el archivo index.html en tu navegador.
