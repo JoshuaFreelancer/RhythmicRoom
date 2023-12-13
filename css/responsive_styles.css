@@ -51,8 +51,8 @@
     width: 170px;
     height: auto;
     position: absolute;
-    top: 5px;
-    left: 25px;
+    top: 80px;
+    left: 115px;
   }
 
   #search-container {
@@ -61,23 +61,24 @@
   }
 
   #searchInput {
-    top: 110px;
-    right: 120px;
-    width: calc(60% - 50px);
+    top: 200px;
+    right: 50px;
+    max-width: 100%;
+    width: 65%;
     margin-right: 0;
   }
 
   #searchButton {
-    top: 110px;
-    right: 120px;
+    top: 200px;
+    right: 50px;
     width: 60px;
     height: 57px;
   }
 
   nav {
     position: absolute;
-    top: 160px;
-    right: 160px;
+    top: 245px;
+    right: 80px;
   }
 
   #userProfileImage {
@@ -133,10 +134,11 @@
     text-align: center;
   }
 
-  #inicio .start-button {
+  .start-button {
     position: absolute;
-    left: 150px;
-    bottom: -60mm;
+    left: 13mm;
+    bottom: -100mm;
+    margin-bottom: 20px;
     z-index: 2;
   }
 
@@ -149,56 +151,69 @@
 
   /* Estilos para tamaños de pantalla medianos (Tablet) */
   @media screen and (max-width: 1023px) {
-    #top-songs h2 {
-      position: absolute;
-      top: 300mm;
-      font-size: 28px;
-    }
-
     .youtube-container {
-      top: 180mm;
-      left: 150mm;
+      top: 420mm;
+      left: 50px;
     }
-
+  
+    #top-songs h2 {
+      bottom: 25mm;
+      font-size: 24px;
+    }
+  
     .chart-bar-container {
-      top: 280mm;
+      top: 330mm;
       left: 5mm;
+      margin-left: px0;
+      width: 100%; /* Cambiado para ocupar todo el ancho */
+      padding: 0;
+      display: flex;
+      flex-direction: row-reverse; /* Cambiado a dirección horizontal invertida */
+      justify-content: flex-end; /* Alineado a la derecha */
     }
-
-    .chart-column {
-      width: 100%;
+  
+    .chart-bar {
+      flex: 1;
+      height: auto; /* Ajuste para cambiar la altura automáticamente */
+      transition: width 0.3s ease; /* Cambiado de height a width para la animación */
+      flex-direction: row; /* Cambiado a dirección horizontal */
     }
-    
+  
     .chart-label {
       font-size: 10px;
+      white-space: nowrap; /* Evita saltos de línea en etiquetas */
+    }
+  
+    .chart-column {
+      width: auto;
     }
   }
-
-  /* Estilos para tamaños de pantalla pequeños (Teléfono) */
-@media screen and (max-width: 767px) {
 
   /* Estilos para tamaños de pantalla pequeños (Teléfono) */
 @media screen and (max-width: 767px) {
 
   .youtube-container {
-    top: 420mm;
-    left: 50px;
+    position: absolute;
+    top: 385mm;
+    left: 0;
+    margin-left: 0;
+    padding: auto;
   }
 
   #top-songs h2 {
-    bottom: 15mm;
+    top: 0mm;
     font-size: 24px;
   }
 
   .chart-bar-container {
-    top: 330mm;
+    top: 305mm;
     left: 5mm;
-    margin: 0;
-    width: 93%; /* Cambiado para ocupar todo el ancho */
+    margin-left: 0;
+    width: 97%; /* Cambiado para ocupar todo el ancho */
     padding: 0;
     display: flex;
     flex-direction: row-reverse; /* Cambiado a dirección horizontal invertida */
-    justify-content: flex-end; /* Alineado a la derecha */
+
   }
 
   .chart-bar {
@@ -248,11 +263,12 @@
 @media screen and (max-width: 767px) {
   #artistCarousel {
     padding: 5px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
+    flex-direction: column; /* Cambia la dirección a columna para un carrusel vertical */
+    overflow-x: hidden;
+    overflow-y: auto;
+    white-space: normal; /* Añade esto para permitir saltos de línea dentro de #artistCarousel */
     position: absolute;
-    bottom: -1000px;
+    bottom: -5200px;
   }
 
   #top-artists-albums {
@@ -262,29 +278,31 @@
     margin-top: 40px;
   }
   
-  #top-artists-albums h2 {
+   h2 {
     font-size: 28px;
     color: #1D1C25;
     position: absolute;
-    top: 330px;
-    margin-bottom: 20px;
+    top: 450mm;
     font-family: 'Montserrat', sans-serif;
     /* Utiliza la fuente Montserrat */
   }
 
   .artist-card {
-    margin-right: 10px;
+    margin-bottom: 10px; /* Espaciado entre las tarjetas */
     min-width: 150px;
+    white-space: normal; /* Añade esto para permitir saltos de línea dentro de .artist-card */
   }
 
   .artist-card img {
-    height: 150px;
+    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+    max-width: 100%; /* Evita que las imágenes se desborden de sus contenedores */
   }
 
   .artist-details {
     padding: 10px;
   }
 }
+
 
 /* Media Query para Tablets */
 @media screen and (max-width: 768px) {
@@ -303,7 +321,7 @@
     padding: 20px;
     position: absolute;
     width: 100%;
-    top: 600mm;
+    top: 800mm;
   }
 }
 
@@ -313,17 +331,19 @@
     flex: 1;
     margin-top: 20px;
     margin-left: 0;
+    text-align: center;
   }
 }
 footer {
   background-color: #1D1C25;
   color: white;
   padding: 20px;
+  width: 100%;
+  top: 1555mm;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
-}
-  }
+ }
 }

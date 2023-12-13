@@ -128,12 +128,14 @@ document.addEventListener("DOMContentLoaded", function () {
   youtubeVideos.forEach((videoId) => {
     const youtubeEmbed = document.createElement("iframe");
     youtubeEmbed.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1&showinfo=0&modestbranding=1&rel=0`;
-    youtubeEmbed.width = 510;
-    youtubeEmbed.height = 325;
+    youtubeEmbed.width = 385; // Ancho del 100% para adaptarse al contenedor
+    youtubeEmbed.height = 240; // Altura ajustada según tus preferencias
+    youtubeEmbed.style.maxWidth = "510px"; // Ancho máximo si se necesita
     youtubeEmbed.allowFullscreen = true;
     youtubeContainer.appendChild(youtubeEmbed);
   });
 });
+
 
 // Cargar más artistas al iniciar la página
 document.addEventListener("DOMContentLoaded", async function () {
