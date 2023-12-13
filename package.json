@@ -1,0 +1,17 @@
+{
+  "name": "recuperativo-pagina-web",
+  "version": "1.0.0",
+  "description": "RhythmicRoom: Tu Puerta a la Música Descubre, disfruta y conecta con la música en RhythmicRoom. Desde artistas destacados hasta listas de reproducción personalizadas, encuentra la armonía perfecta para cada momento.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
