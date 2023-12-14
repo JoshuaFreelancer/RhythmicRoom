@@ -116,26 +116,6 @@ function createChartBar(popularity, label, chartData) {
   return bar;
 }
 
-// Crear un contenedor para los videos de YouTube
-document.addEventListener("DOMContentLoaded", function () {
-  const youtubeContainer = document.getElementById("youtubeContainer");
-
-  const youtubeVideos = [
-    "PyXfSlxOPpA", // Este es un ID de video que generalmente funciona bien
-    // Puedes agregar más IDs de videos según sea necesario
-  ];
-
-  youtubeVideos.forEach((videoId) => {
-    const youtubeEmbed = document.createElement("iframe");
-    youtubeEmbed.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1&showinfo=0&modestbranding=1&rel=0`;
-    youtubeEmbed.width = 385; // Ancho del 100% para adaptarse al contenedor
-    youtubeEmbed.height = 240; // Altura ajustada según tus preferencias
-    youtubeEmbed.style.maxWidth = "510px"; // Ancho máximo si se necesita
-    youtubeEmbed.allowFullscreen = true;
-    youtubeContainer.appendChild(youtubeEmbed);
-  });
-});
-
 
 // Cargar más artistas al iniciar la página
 document.addEventListener("DOMContentLoaded", async function () {
