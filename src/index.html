@@ -8,27 +8,26 @@
 
     <!-- Enlaces a fuentes y estilos -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive_styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/responsive_styles.css">
 
     <!-- Icono de la página -->
-    <link rel="icon" href="./images/Notas-musicales.png" type="image/png">
+    <link rel="icon" href="../public/images/notas-musicales.png" type="image/png">
 
     <!-- Título de la página -->
     <title>RhythmicRoom</title>
 </head>
 
 <body>
-    <script src="dist/bundle.js"></script>
     <!-- Encabezado de la página -->
     <header id="mainHeader">
         <!-- Logotipos y barra de búsqueda -->
-        <img src="images/Principal.png" alt="RhythmicRoom Header" id="headerImage">
-        <img src="images/Logo_complete.png" alt="RhythmicRoom Logo" id="logo">
+        <img src="../public/images/Principal.png" alt="RhythmicRoom Header" id="headerImage">
+        <img src="../public/images/Logo_complete.png" alt="RhythmicRoom Logo" id="logo">
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Buscar música o artistas">
             <button id="searchButton" type="button" onclick="search()">
-                <img src="images/Search_icon.png" alt="Icono de búsqueda">
+                <img src="../public/images/Search_icon.png" alt="Icono de búsqueda">
             </button>
         </div>
 
@@ -52,7 +51,7 @@
             <button class="start-button" onclick="redirectToRegister()">¡Comienza ahora!</button>
         </div>
         <!-- Imagen de bienvenida -->
-        <img src="images/Welcome_image.png" alt="Imagen de bienvenida a RhythmicRoom" id="welcomeImage">
+        <img src="../public/images/Welcome_image.png" alt="Imagen de bienvenida a RhythmicRoom" id="welcomeImage">
 
         <!-- Contenido destacado: Temas en Alza del Último Año -->
         <aside id="top-songs">
@@ -84,7 +83,7 @@
     </section>
 
     <!-- Perfil de Usuario y Opciones -->
-    <img src="./images/Perfil_de_usuario.png" alt="Perfil de Usuario" id="userProfileImage"
+    <img src="./../public/images/Perfil_de_usuario.png" alt="Perfil de Usuario" id="userProfileImage"
         onclick="toggleProfileOptions()">
     <button id="logoutButton" style="display: none;" onclick="logout()">Cerrar Sesión</button>
 
@@ -191,7 +190,7 @@
     </footer>
 
     <!-- Script principal -->
-    <script src="js/main.js"></script>
+    <script src="./pages/home.js"></script>
 
     <!-- Script para manejar las rutas y la visibilidad de las secciones -->
     <script>
