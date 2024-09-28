@@ -7,7 +7,6 @@ RhythmicRoom es una plataforma diseñada para que los amantes de la música desc
 ### Desarrollador
 
 - **Autor:** Jesús García
-- **Cédula:** 30.30.324
 
 ### Introducción
 
@@ -36,7 +35,7 @@ npm install
 
  Recuerda registrarte en la pagina de Last.fm para usar la api dentro del codigo en la carpeta /js/main.js tienes que editar la linea...
 
-const apiKey = "f04f441ada53ca5ad2085e02660c2406"; // Cambiar por tu key de Last.fm
+const apiKey = "Tu key de Last.fm";
 
 ## Iniciar la Aplicación
 Abre el archivo index.html en tu navegador.
