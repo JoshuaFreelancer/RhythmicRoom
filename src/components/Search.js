@@ -1,4 +1,4 @@
-import { searchArtists, searchAlbums, searchTracks } from '../api/lastFmAPI';
+/*import { searchArtists, searchAlbums, searchTracks } from '../api/lastFmAPI';
 
 export function setupSearch() {
   document.getElementById("searchInput").addEventListener("keyup", handleEnterKey);
@@ -30,4 +30,4 @@ function handleEnterKey(event) {
   if (event.key === "Enter") {
     search();
   }
-}
+}*/

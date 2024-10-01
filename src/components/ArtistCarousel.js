@@ -11,12 +11,10 @@ export async function createArtistCarousel(containerId) {
   try {
     // Obtener los 10 artistas más populares
     const data = await ChartAPI.getTopArtists(10);
-    console.log("Datos de artistas obtenidos:", data);
 
     if (data && data.artists && data.artists.artist) {
       const artists = data.artists.artist.slice(0, 10);
       for (const artist of artists) {
-        console.log("Creando tarjeta para el artista:", artist.name);
         const artistCard = await createArtistCard(artist);
         if (artistCard) {
           artistCarousel.appendChild(artistCard);
@@ -50,7 +48,6 @@ async function createArtistCard(artist) {
 
   // Obtener información del artista para usar su imagen y otras propiedades
   const artistData = await ArtistAPI.getArtistInfo(artist.name);
-  console.log("Datos del artista:", artistData);
 
   const imageUrl = artistData?.artist?.image?.[3]["#text"] || 'https://via.placeholder.com/150x200?text=No+Image'; // Placeholder si no hay imagen
   const artistImage = document.createElement("img");

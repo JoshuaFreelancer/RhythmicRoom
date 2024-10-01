@@ -1,5 +1,3 @@
-// navigation.js
-
 function showSection(sectionId) {
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => {

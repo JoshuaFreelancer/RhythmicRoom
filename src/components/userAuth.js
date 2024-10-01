@@ -1,4 +1,4 @@
-function toggleProfileOptions() {
+/*function toggleProfileOptions() {
     const profileOptions = document.querySelector("#profileOptions");
     if (profileOptions) {
         profileOptions.style.display =
@@ -116,4 +116,4 @@ function register() {
             document.getElementById("registrationForm").reset();
         }, 2000);
     }
-}
+}*/

@@ -1,6 +1,4 @@
-// Chart.js
-const apiKey = "f04f441ada53ca5ad2085e02660c2406"; // Cambia por tu clave de Last.fm
-const apiUrl = "http://ws.audioscrobbler.com/2.0/";
+/*
 
 async function fetchFromLastFm(method, params = {}) {
   const url = new URL(apiUrl);
@@ -55,4 +53,4 @@ async function createLatestReleasesChart() {
 }
 
 // Exporta la función para usarla en home.js
-export { createLatestReleasesChart };
+export { createLatestReleasesChart };*/

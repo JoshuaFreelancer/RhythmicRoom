@@ -1,17 +1,29 @@
 {
-  "name": "recuperativo-pagina-web",
+  "name": "rhythmic-room",
   "version": "1.0.0",
-  "description": "RhythmicRoom: Tu Puerta a la Música Descubre, disfruta y conecta con la música en RhythmicRoom. Desde artistas destacados hasta listas de reproducción personalizadas, encuentra la armonía perfecta para cada momento.",
+  "description": "RhythmicRoom: Descubre y conecta con la música. Un espacio para explorar artistas, álbumes y canciones desde la API de Last.fm.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "music",
+    "Last.fm",
+    "music reviews",
+    "API",
+    "web app"
+  ],
+  "author": "JoshuaFreelancer",
+  "license": "MIT",
   "devDependencies": {
+    "dotenv-webpack": "^8.1.0",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }

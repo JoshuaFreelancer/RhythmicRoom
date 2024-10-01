@@ -1,4 +1,4 @@
-export function displayResults(results, containerId, subtitle) {
+/*export function displayResults(results, containerId, subtitle) {
     const resultsContainer = document.getElementById(containerId);
     resultsContainer.innerHTML = "";
   
@@ -21,5 +21,5 @@ export function displayResults(results, containerId, subtitle) {
     } else {
       resultsContainer.textContent = "No se encontraron resultados";
     }
-  }
+  }*/
   

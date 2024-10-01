@@ -1,8 +1,6 @@
-import { fetchMusicGenres } from '../api/lastFmAPI';
+/*import { fetchMusicGenres } from '../api/lastFmAPI';
 
 export async function loadMusicGenres(containerId) {
-  const apiKey = "f04f441ada53ca5ad2085e02660c2406";
-  const apiUrl = "http://ws.audioscrobbler.com/2.0/";
 
   const data = await fetchMusicGenres(apiKey, apiUrl);
   const genresContainer = document.getElementById(containerId);
@@ -42,4 +40,4 @@ function createGenreName(tag) {
   const genreName = document.createElement("p");
   genreName.innerText = tag.name;
   return genreName;
-}
+}*/

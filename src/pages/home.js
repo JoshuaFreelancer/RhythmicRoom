@@ -1,5 +1,5 @@
 import { createArtistCarousel } from '../components/ArtistCarousel.js';
-import { createLatestReleasesChart } from '../components/Chart.js';
+/*import { createLatestReleasesChart } from '../components/Chart.js';*/
 
 // Al cargar la página
 document.addEventListener('DOMContentLoaded', async () => {
