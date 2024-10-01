@@ -1,66 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <!-- Configuración del documento -->
+    <!-- Metadatos y configuración del documento -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RhythmicRoom: Explora reseñas y novedades del mundo de la música. Descubre álbumes y artistas con la API de Last.fm."
+    />
+    <meta
+      name="keywords"
+      content="música, reseñas, álbumes, artistas, Last.fm, RhythmicRoom"
+    />
+    <meta name="author" content="JoshuaFreelancer" />
 
-    <!-- Enlaces a fuentes y estilos -->
+    <!-- Carga de fuentes y estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="stylesheet" href="./styles/responsive_styles.css" />
-
-    <!-- Icono de la página -->
     <link
       rel="icon"
-      href="../public/images/notas-musicales.png"
+      href="../public/images/Notas_musicales.png"
       type="image/png"
     />
 
-    <!-- Título de la página -->
-    <title>RhythmicRoom</title>
+    <title>RhythmicRoom - Reseñas y Novedades Musicales</title>
   </head>
 
   <body>
     <!-- Encabezado de la página -->
     <header id="mainHeader">
-      <!-- Logotipos y barra de búsqueda -->
-      <img
-        src="../public/images/Principal.png"
-        alt="RhythmicRoom Header"
-        id="headerImage"
-      />
-      <img
-        src="../public/images/Logo_complete.png"
-        alt="RhythmicRoom Logo"
-        id="logo"
-      />
-      <div class="search-container">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Buscar música o artistas"
-        />
-        <button id="searchButton" type="button" onclick="search()">
-          <img src="../public/images/Search_icon.png" alt="Icono de búsqueda" />
-        </button>
+      <div class="header-container">
+        <div id="headerImage"></div>
+        <a href="index.html" aria-label="Ir a la página principal">
+          <img
+            src="../public/images/Logo_complete.svg"
+            alt="Logo de RhythmicRoom"
+            id="logo"
+          />
+        </a>
+        <div class="search-container">
+          <label for="searchInput"></label>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar música o artistas"
+            aria-label="Campo de búsqueda"
+          />
+          <button
+            id="searchButton"
+            type="button"
+            aria-label="Buscar"
+            onclick="search()"
+          >
+            <img
+              src="../public/images/Search_icon.png"
+              alt="Icono de búsqueda"
+            />
+          </button>
+        </div>
       </div>
 
-      <!-- Navegación principal -->
-      <nav>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#musicas">Músicas</a></li>
+      <button
+        id="menuToggle"
+        class="menu-toggle"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mainMenu"
+      >
+        ☰
+      </button>
+      <nav id="mainMenu" class="nav-menu" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#inicio" class="nav-link active" aria-current="page"
+              >Inicio</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="#musicas" class="nav-link">Músicas</a>
+          </li>
+          <li class="nav-item">
+            <a href="#artistas" class="nav-link">Artistas</a>
+          </li>
+          <li class="nav-item">
+            <a href="#albumes" class="nav-link">Álbumes</a>
+          </li>
+          <li class="nav-item">
+            <a href="#generos" class="nav-link">Géneros</a>
+          </li>
         </ul>
       </nav>
     </header>
 
+    <div id="loader" class="loader-container" aria-hidden="true">
+      <div class="loader" aria-label="Cargando..."></div>
+    </div>
+
+    <!-- Contenedor del Perfil de Usuario -->
+    <div class="profile-container">
+      <i
+        class="fas fa-user-circle"
+        id="userProfileIcon"
+        onclick="toggleProfileOptions()"
+        aria-label="Perfil de usuario"
+      ></i>
+      <button
+        id="logoutButton"
+        class="profile-button"
+        style="display: none"
+        onclick="logout()"
+      >
+        Cerrar Sesión
+      </button>
+      <div id="profileOptions" class="profile-options" style="display: none">
+        <a href="#login" class="profile-option">Iniciar Sesión</a>
+        <a href="#register" class="profile-option">Registrarse</a>
+      </div>
+    </div>
+
+    <!-- Secciones de Inicio de Sesión y Registro -->
+    <section id="login" style="display: none">
+      <form id="loginForm">
+        <label for="loginUsername">Usuario:</label>
+        <input type="text" id="loginUsername" required />
+        <label for="loginPassword">Contraseña:</label>
+        <input type="password" id="loginPassword" required />
+        <button type="button" onclick="login()">Iniciar Sesión</button>
+      </form>
+      <div id="loginResultContainer">
+        <p id="loginResult"></p>
+      </div>
+    </section>
+
+    <section id="register" style="display: none">
+      <form id="registrationForm">
+        <label for="registerFirstName">Nombre:</label>
+        <input type="text" id="registerFirstName" required />
+        <label for="registerLastName">Apellido:</label>
+        <input type="text" id="registerLastName" required />
+        <label for="registerUsername">Usuario:</label>
+        <input type="text" id="registerUsername" required />
+        <label for="registerEmail">Email:</label>
+        <input type="email" id="registerEmail" required />
+        <label for="registerPassword">Contraseña:</label>
+        <input type="password" id="registerPassword" required />
+        <button type="button" onclick="register()">Registrarse</button>
+      </form>
+      <p id="registerResult"></p>
+    </section>
+
     <!-- Sección de Inicio -->
     <section id="inicio">
-      <!-- Contenido de bienvenida y llamada a la acción -->
       <div class="text-container">
         <h1>Tu Puerta a la Música <span>Moderna</span></h1>
         <p>
@@ -71,136 +171,40 @@
           ¡Comienza ahora!
         </button>
       </div>
-      <!-- Imagen de bienvenida -->
       <img
-        src="../public/images/Welcome_image.png"
+        src="../public/images/Welcome_image.svg"
         alt="Imagen de bienvenida a RhythmicRoom"
         id="welcomeImage"
       />
+    </section>
 
-      <!-- Contenido destacado: Temas en Alza del Último Año -->
-      <aside id="top-songs">
-        <div id="topSongsSection">
-          <h2>Temas en Alza del Último Año</h2>
-          <div id="chartContainer">
-            <div id="youtubeContainer" class="youtube-container">
-              <!-- Videos de YouTube se agregarán aquí dinámicamente -->
-            </div>
-            <!-- Contenedor adicional para la gráfica -->
-            <div class="chart-wrapper" id="chartWrapper"></div>
-          </div>
-        </div>
-      </aside>
-
-      <!-- Contenido destacado: Top Albums -->
-      <h2>Top Albums</h2>
-      <div id="artistCarousel" class="carousel-container">
-        <!-- Aquí se cargarán las imágenes del carrusel -->
+    <h2 class="section-title">Artistas en alza</h2>
+    <div class="carousel-container" id="artistCarouselContainer">
+      <button class="carousel-arrow left-arrow" id="left-arrow">&#9664;</button>
+      <div class="carousel-track">
+        <!-- Tarjetas llenadas dinámicamente -->
       </div>
-    </section>
-
-    <!-- Sección de Explorar Músicas -->
-    <section id="musicas">
-      <h2>Explora Músicas</h2>
-      <!-- Contenido de la sección de Músicas aquí -->
-      <!-- Contenedor para la lista de géneros -->
-      <div id="musicGenresContainer"></div>
-    </section>
-
-    <!-- Perfil de Usuario y Opciones -->
-    <img
-      src="./../public/images/Perfil_de_usuario.png"
-      alt="Perfil de Usuario"
-      id="userProfileImage"
-      onclick="toggleProfileOptions()"
-    />
-    <button id="logoutButton" style="display: none" onclick="logout()">
-      Cerrar Sesión
-    </button>
-
-    <!-- Menú de Opciones de Perfil -->
-    <div id="profileOptions" style="display: none">
-      <a href="#login">Iniciar Sesión</a>
-      <a href="#register">Registrarse</a>
+      <button class="carousel-arrow right-arrow" id="right-arrow">
+        &#9654;
+      </button>
     </div>
-
-    <!-- Sección de Inicio de Sesión -->
-    <section id="login" style="display: none">
-      <form id="loginForm">
-        <label for="loginUsername">Usuario:</label>
-        <input type="text" id="loginUsername" required />
-
-        <label for="loginPassword">Contraseña:</label>
-        <input type="password" id="loginPassword" required />
-
-        <button type="button" onclick="login()">Iniciar Sesión</button>
-      </form>
-      <div id="loginResultContainer">
-        <p id="loginResult"></p>
-      </div>
-    </section>
-
-    <!-- Sección de Registro de Usuario -->
-    <section id="register" style="display: none">
-      <form id="registrationForm">
-        <label for="registerFirstName">Nombre:</label>
-        <input type="text" id="registerFirstName" required />
-
-        <label for="registerLastName">Apellido:</label>
-        <input type="text" id="registerLastName" required />
-
-        <label for="registerUsername">Usuario:</label>
-        <input type="text" id="registerUsername" required />
-
-        <label for="registerEmail">Email:</label>
-        <input type="email" id="registerEmail" required />
-
-        <label for="registerPassword">Contraseña:</label>
-        <input type="password" id="registerPassword" required />
-
-        <button type="button" onclick="register()">Registrarse</button>
-      </form>
-      <p id="registerResult"></p>
-    </section>
-
-    <!-- Sección de Resultados de Búsqueda -->
-    <section id="searchResults" style="display: none">
-      <div id="artistsResults" class="results-container">
-        <!-- Resultados de artistas se mostrarán aquí -->
-        <ul>
-          <!-- Agrega la etiqueta de apertura -->
-        </ul>
-        <!-- Agrega la etiqueta de cierre -->
-      </div>
-      <div id="albumsResults" class="results-container">
-        <!-- Resultados de álbumes se mostrarán aquí -->
-        <ul>
-          <!-- Agrega la etiqueta de apertura -->
-        </ul>
-        <!-- Agrega la etiqueta de cierre -->
-      </div>
-      <div id="tracksResults" class="results-container">
-        <!-- Resultados de pistas se mostrarán aquí -->
-        <ul>
-          <!-- Agrega la etiqueta de apertura -->
-        </ul>
-        <!-- Agrega la etiqueta de cierre -->
-      </div>
-    </section>
-
-    <!-- Loader -->
-    <div id="loader" class="loader-container" aria-hidden="true">
-      <div class="loader" aria-label="Cargando"></div>
+    
+    <div class="latest-releases">
+      <h2>Últimos Lanzamientos</h2>
+      <canvas id="latestReleasesChart"></canvas>
     </div>
 
     <!-- Pie de página -->
     <footer>
       <div class="footer-container">
-        <!-- Enlaces de descubrimiento y soporte -->
         <div class="footer-column">
           <h3>Descubre</h3>
           <ul>
             <li><a href="#musicas">Música</a></li>
+            <li><a href="#listas">Listas</a></li>
+            <li><a href="#artistas">Artistas</a></li>
+            <li><a href="#albumes">Álbumes</a></li>
+            <li><a href="#generos">Géneros</a></li>
           </ul>
         </div>
         <div class="footer-column">
@@ -210,7 +214,6 @@
             <li onclick="redirectToLogin()">Loguearse</li>
           </ul>
         </div>
-        <!-- Enlaces de redes sociales -->
         <div class="footer-column">
           <h3>¡Síguenos!</h3>
           <ul>
@@ -228,221 +231,13 @@
         </div>
       </div>
       <hr class="footer-divider" />
-      <!-- Derechos de autor -->
       <p>&copy; 2023 RhythmicRoom. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script principal -->
-    <script src="./pages/home.js"></script>
-
-    <!-- Script para manejar las rutas y la visibilidad de las secciones -->
-    <script>
-      function toggleProfileOptions() {
-        const profileOptions = document.querySelector("#profileOptions");
-        if (profileOptions) {
-          profileOptions.style.display =
-            profileOptions.style.display === "none" ? "block" : "none";
-        }
-      }
-
-      function redirectToLogin() {
-        // Redirigir a la página de registro
-        window.location.href = "#login";
-      }
-
-      function login() {
-        const username = document.getElementById("loginUsername").value;
-        const password = document.getElementById("loginPassword").value;
-        const resultContainer = document.getElementById("loginResult");
-
-        // Validar campos obligatorios
-        if (!username || !password) {
-          resultContainer.textContent = "Todos los campos son obligatorios";
-          resultContainer.style.color = "#ff0000"; // Color rojo
-          return;
-        }
-
-        // Comprobar si el usuario existe en el almacenamiento local
-        const storedUser = localStorage.getItem(username);
-        if (storedUser) {
-          const userData = JSON.parse(storedUser);
-
-          // Verificar la contraseña
-          if (verifyPassword(userData.password, password)) {
-            // Inicio de sesión exitoso
-
-            resultContainer.textContent = "Inicio de sesión exitoso";
-            resultContainer.style.color = "#00ff00"; // Color verde
-
-            // Redirigir a la página principal después de 2 segundos (ajusta según sea necesario)
-            setTimeout(function () {
-              window.location.href = "#inicio";
-              document.getElementById("loginForm").reset();
-            }, 2000);
-          } else {
-            resultContainer.textContent = "Contraseña incorrecta";
-            resultContainer.style.color = "#ff0000"; // Color rojo
-          }
-        } else {
-          resultContainer.textContent = "Usuario no encontrado";
-          resultContainer.style.color = "#ff0000"; // Color rojo
-        }
-      }
-
-      function verifyPassword(storedPassword, enteredPassword) {
-        // Implementa la lógica de verificación de contraseñas aquí
-        return storedPassword === enteredPassword; // Este es un ejemplo básico
-      }
-
-      function redirectToRegister() {
-        // Redirigir a la página de registro
-        window.location.href = "#register";
-      }
-
-      // Función para registrar
-      function register() {
-        const firstName = document.getElementById("registerFirstName").value;
-        const lastName = document.getElementById("registerLastName").value;
-        const username = document.getElementById("registerUsername").value;
-        const email = document.getElementById("registerEmail").value;
-        const password = document.getElementById("registerPassword").value;
-        const resultContainer = document.getElementById("registerResult");
-
-        // Validar campos obligatorios
-        if (!firstName || !lastName || !username || !email || !password) {
-          resultContainer.textContent = "Todos los campos son obligatorios";
-          resultContainer.className = "error";
-          return;
-        }
-
-        // Validar el formato del correo electrónico usando una expresión regular básica
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          resultContainer.textContent =
-            "Formato de correo electrónico no válido";
-          resultContainer.className = "error";
-          return;
-        }
-
-        // Comprobar si el usuario ya existe en el almacenamiento local
-        const existingUser = localStorage.getItem(username);
-        const existingEmail = Object.values(localStorage).some((userData) => {
-          const user = JSON.parse(userData);
-          return user.email === email;
-        });
-
-        if (existingUser) {
-          resultContainer.textContent = "El usuario ya existe";
-          resultContainer.className = "error";
-        } else if (existingEmail) {
-          resultContainer.textContent =
-            "El correo electrónico ya está registrado";
-          resultContainer.className = "error";
-        } else {
-          // Almacenar los datos del usuario en el almacenamiento local
-          const userData = {
-            firstName,
-            lastName,
-            email,
-            password,
-          };
-          localStorage.setItem(username, JSON.stringify(userData));
-
-          resultContainer.textContent = "Registro exitoso";
-          resultContainer.className = "success";
-
-          // Redirigir a la página de inicio de sesión después de 2 segundos (ajusta según sea necesario)
-          setTimeout(function () {
-            window.location.href = "#login";
-            document.getElementById("registrationForm").reset();
-          }, 2000);
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        let loadingTimeout; // Variable para rastrear el temporizador de carga
-
-        // Función para mostrar el loader
-        function showLoader() {
-          document.getElementById("loader").style.display = "flex";
-        }
-
-        // Función para ocultar el loader
-        function hideLoader() {
-          document.getElementById("loader").style.display = "none";
-        }
-
-        // Función para detener la carga automáticamente después de un tiempo
-        function stopLoadingAutomatically() {
-          hideLoader();
-        }
-
-        // Función para mostrar una sección y manejar la carga
-        function showSection(sectionId) {
-          clearTimeout(loadingTimeout); // Limpiar el temporizador antes de cargar una nueva sección
-          showLoader(); // Mostrar el loader al comenzar a cargar una sección
-
-          loadingTimeout = setTimeout(stopLoadingAutomatically, 2000); // Establecer un tiempo límite
-          const sections = document.querySelectorAll("section");
-          sections.forEach((section) => {
-            section.style.display = "none";
-          });
-
-          const targetSection = document.getElementById(sectionId);
-          if (targetSection) {
-            targetSection.style.display = "block";
-
-            if (sectionId === "musicas") {
-              loadMusicGenres();
-            } else if (sectionId === "searchResults") {
-              handleSearchResults();
-            }
-          }
-        }
-
-        // Función para manejar la navegación
-        function handleNavigation() {
-          const currentHash = window.location.hash.substr(1);
-
-          if (
-            currentHash === "musicas" ||
-            currentHash === "listas" ||
-            currentHash === "artistas"
-          ) {
-            showSection(currentHash);
-          } else if (currentHash.startsWith("searchResults")) {
-            showSection("searchResults");
-          } else if (currentHash === "login" || currentHash === "register") {
-            showSection(currentHash);
-          } else {
-            showSection("inicio");
-          }
-        }
-
-        // Función para manejar los resultados de búsqueda
-        function handleSearchResults() {
-          // Lógica específica para la sección de resultados de búsqueda
-          const searchParams = new URLSearchParams(
-            window.location.hash.substr(1).split("?")[1]
-          );
-          const searchTerm = searchParams.get("q");
-
-          // Llamar a funciones para obtener y mostrar resultados
-          searchArtists(searchTerm);
-          searchAlbums(searchTerm);
-          searchTracks(searchTerm);
-
-          clearTimeout(loadingTimeout); // Limpiar el temporizador cuando se completan las operaciones
-          hideLoader(); // Ocultar el loader cuando se completan las operaciones
-          document.getElementById("searchResults").style.display = "block";
-        }
-
-        // Manejar cambios de hash
-        window.addEventListener("hashchange", handleNavigation);
-
-        // Manejar la carga inicial de la página
-        handleNavigation();
-      });
-    </script>
+    <!-- Scripts principales -->
+    <script type="module" src="./pages/home.js"></script>
+    <script src="./components/userAuth.js"></script>
+    <script src="./utils/loader.js"></script>
+    <script src="./utils/navigation.js"></script>
   </body>
 </html>
