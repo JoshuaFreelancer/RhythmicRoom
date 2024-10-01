@@ -4,10 +4,6 @@
 
 RhythmicRoom es una plataforma diseñada para que los amantes de la música descubran, disfruten y se conecten con sus canciones favoritas. Desde artistas destacados hasta listas de reproducción personalizadas, esta aplicación busca ofrecer la armonía perfecta para cada momento.
 
-### Desarrollador
-
-- **Autor:** Jesús García
-
 ### Introducción
 
 RhythmicRoom es una aplicación web que utiliza diversas tecnologías para proporcionar una experiencia musical personalizada. Esta documentación te guiará a través de los pasos necesarios para clonar y poner en funcionamiento el proyecto.
@@ -21,7 +17,10 @@ Asegúrate de tener instalado:
 
 ### Clonar el Proyecto
 
-git clone https://github.com/Joshua-desings/recuperativo-pagina-web.git
+```bash
+git clone https://github.com/JoshuaFreelancer/RhythmicRoom.git
+cd RhythmicRoom
+```
 
 cd (la ruta donde clonaste el proyecto)
 
@@ -33,9 +32,11 @@ npm install
 
 ## Cambiar claves
 
- Recuerda registrarte en la pagina de Last.fm para usar la api dentro del codigo en la carpeta /js/main.js tienes que editar la linea...
+ Recuerda registrarte en la página de Last.fm para usar la API dentro del código. En la carpeta api/lastFmAPI.js, tienes que editar la línea:
 
-const apiKey = "Tu key de Last.fm";
+```bash
+const apiKey = ''; // Reemplazar por tu clave de la API de Last.fm
+```
 
 ## Iniciar la Aplicación
 Abre el archivo index.html en tu navegador.
@@ -44,7 +45,10 @@ Abre el archivo index.html en tu navegador.
 El proyecto utiliza la API de Last.fm, que proporciona acceso a un amplio catálogo de música, artistas y listas de reproducción. Puedes obtener más información sobre esta API en (https://www.last.fm/home).
 
 ## Funcionalidades Destacadas
-Descubrimiento Musical: Explora nuevos artistas y géneros musicales.
 
-## Contribuciones
-¡Las contribuciones son bienvenidas! Si encuentras problemas o tienes ideas para mejoras, por favor abre un issue o envía un pull request.
+- Descubrimiento Musical: Explora nuevos artistas y géneros musicales.
+- Buscador de Álbumes, Artistas y Música: Encuentra fácilmente tus álbumes y artistas favoritos.
+- Visualización de Listas de Canciones: Consulta las canciones de un álbum o artista específico.
+- Top Tracks y Artistas: Descubre las canciones y artistas más populares del momento.
+- Etiquetas Musicales: Explora música por etiquetas, facilitando la búsqueda de géneros específicos.
+
